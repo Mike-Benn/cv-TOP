@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+main {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    
+}
+
+.generator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.field {
+    position: relative;
+    display: flex;
+     
+}
+
+input , textarea{
+    flex-grow: 1;
+
+}
+
+.field-label {
+    position: absolute;
+
+}
+
+.form-header {
+    align-self: center;
+}
