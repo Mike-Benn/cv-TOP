@@ -10,6 +10,7 @@ function SmallTextField({ fieldName = "Placeholder" }) {
                 type='text'
                 name={forVal}
                 id={forVal}
+                className='text-input'
             />
         </div>
         

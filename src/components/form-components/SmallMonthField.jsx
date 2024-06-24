@@ -11,6 +11,7 @@ function SmallMonthField({ fieldName = "Placeholder" }) {
                 type="month"
                 name={forVal}
                 id={forVal} 
+                className='text-input'
             />
         </div>
     )

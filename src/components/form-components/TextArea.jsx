@@ -8,7 +8,8 @@ function TextArea({ fieldName = "Placeholder" }) {
             <label className='field-label' htmlFor={forVal}>{fieldName}</label>
             <textarea 
                 name={forVal} 
-                id={forVal}>
+                id={forVal}
+                className='text-input'>
             </textarea>
         </div>
     );

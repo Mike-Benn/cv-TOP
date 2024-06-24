@@ -11,6 +11,7 @@ function SmallNumberField({ fieldName = "Placeholder" }) {
                 type="number"
                 name={forVal}
                 id={forVal} 
+                className='text-input'
             />
         </div>
     )
