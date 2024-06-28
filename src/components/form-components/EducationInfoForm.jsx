@@ -1,6 +1,7 @@
 import SmallTextField from './SmallTextField';
 import SmallNumberField from './SmallNumberField';
 import CheckboxField from './CheckboxField';
+import SubmitButton from '../buttons/SubmitButton';
 
 
 function EducationInfoForm() {
@@ -13,6 +14,7 @@ function EducationInfoForm() {
             <SmallTextField fieldName='Program/Degree' placeHolder='BS in Computer Science' />
             <CheckboxField fieldName='Still Enrolled' />
             <SmallNumberField fieldName='GPA (optional)' />
+            <SubmitButton buttonText='Submit Education Background' />
         </div>
     )
 }

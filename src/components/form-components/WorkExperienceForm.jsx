@@ -1,6 +1,8 @@
 import SmallTextField from './SmallTextField';
 import SmallMonthField from './SmallMonthField';
 import CheckboxField from './CheckboxField';
+import BulletListField from './BulletListField';
+import SubmitButton from '../buttons/SubmitButton';
 
 
 
@@ -13,6 +15,8 @@ function WorkExperienceForm() {
             <SmallTextField fieldName='Workplace/Company' />
             <SmallMonthField fieldName='Starting Date' />
             <CheckboxField fieldName='Still Employed' />
+            <BulletListField fieldName='Job Responsibilities' />
+            <SubmitButton buttonText='Submit Work Experience' />
         </div>
 
     )

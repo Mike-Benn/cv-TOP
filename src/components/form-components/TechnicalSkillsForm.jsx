@@ -1,5 +1,5 @@
 import SmallTextField from './SmallTextField';
-import SubmitSkillButton from '../buttons/SubmitSkillButton';
+import SubmitButton from '../buttons/SubmitButton';
 
 
 function TechnicalSkillsForm() {
@@ -8,9 +8,9 @@ function TechnicalSkillsForm() {
         <div className='form-section'>
             <h2 className='form-header'>Technical Skills</h2>
             <SmallTextField fieldName='Programming Languages' />
-            <SubmitSkillButton buttonText='Submit Language' />
+            <SubmitButton buttonText='Submit Language' />
             <SmallTextField fieldName='Frameworks/Tools' />
-            <SubmitSkillButton buttonText='Submit Framework/Tool' />
+            <SubmitButton buttonText='Submit Framework/Tool' />
         </div>
     )
 }
