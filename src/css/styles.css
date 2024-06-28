@@ -51,7 +51,15 @@ main {
 .field {
     position: relative;
     display: flex;
+    
      
+}
+
+.bullet-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .checkbox-field {
