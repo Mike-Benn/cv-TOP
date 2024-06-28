@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function SubmitSkillButton({ buttonText = "Placeholder", buttonClass = ""}) {
+function SubmitButton({ buttonText = "Placeholder", buttonClass = ""}) {
     
 
     /*return (
@@ -22,9 +22,9 @@ function SubmitSkillButton({ buttonText = "Placeholder", buttonClass = ""}) {
         )
 }
 
-SubmitSkillButton.propTypes = {
+SubmitButton.propTypes = {
     buttonText: PropTypes.string.isRequired,
     buttonClass: PropTypes.string.isRequired,
 };
 
-export default SubmitSkillButton
+export default SubmitButton
