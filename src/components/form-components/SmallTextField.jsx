@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function SmallTextField({ fieldName = "Placeholder" , placeHolder = ""}) {
+function SmallTextField({ fieldName = "Placeholder" , placeHolder = "" , onInputChange , value}) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -12,6 +12,9 @@ function SmallTextField({ fieldName = "Placeholder" , placeHolder = ""}) {
                 id={forVal}
                 className='text-input'
                 placeholder={placeHolder}
+                onChange={onInputChange}
+                value={value}
+                
             />
         </div>
         
@@ -20,7 +23,9 @@ function SmallTextField({ fieldName = "Placeholder" , placeHolder = ""}) {
 
 SmallTextField.propTypes = {
     fieldName: PropTypes.string.isRequired,
-    placeHolder: PropTypes.string
+    placeHolder: PropTypes.string,
+    onInputChange: PropTypes.func,
+    value: PropTypes.string
 };
 
 

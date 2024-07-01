@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function CheckboxField({ fieldName = "Placeholder" }) {
+function CheckboxField({ fieldName = "Placeholder" , onInputChange , checked}) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -12,6 +12,8 @@ function CheckboxField({ fieldName = "Placeholder" }) {
                 name={forVal}
                 id={forVal} 
                 className='checkbox-input'
+                onChange={onInputChange}
+                checked={checked}
             />
         </div>
     )
@@ -19,6 +21,8 @@ function CheckboxField({ fieldName = "Placeholder" }) {
 
 CheckboxField.propTypes = {
     fieldName: PropTypes.string.isRequired,
+    onInputChange: PropTypes.func,
+    checked: PropTypes.bool,
 };
 
 export default CheckboxField;

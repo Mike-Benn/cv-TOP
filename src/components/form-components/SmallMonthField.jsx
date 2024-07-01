@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function SmallMonthField({ fieldName = "Placeholder" }) {
+function SmallMonthField({ fieldName = "Placeholder" , onInputChange , value}) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -12,6 +12,8 @@ function SmallMonthField({ fieldName = "Placeholder" }) {
                 name={forVal}
                 id={forVal} 
                 className='text-input'
+                onChange={onInputChange}
+                value={value}
             />
         </div>
     )
@@ -19,6 +21,8 @@ function SmallMonthField({ fieldName = "Placeholder" }) {
 
 SmallMonthField.propTypes = {
     fieldName: PropTypes.string.isRequired,
+    onInputChange: PropTypes.func,
+    value: PropTypes.string,
 };
 
 export default SmallMonthField;
