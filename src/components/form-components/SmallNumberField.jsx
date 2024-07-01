@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function SmallNumberField({ fieldName = "Placeholder", placeHolder = " " }) {
+function SmallNumberField({ fieldName = "Placeholder", placeHolder = "" }) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -20,7 +20,7 @@ function SmallNumberField({ fieldName = "Placeholder", placeHolder = " " }) {
 
 SmallNumberField.propTypes = {
     fieldName: PropTypes.string.isRequired,
-    placeHolder: PropTypes.string.isRequired,
+    placeHolder: PropTypes.string,
 };
 
 export default SmallNumberField
