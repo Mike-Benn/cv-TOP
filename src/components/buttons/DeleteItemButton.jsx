@@ -1,10 +1,10 @@
 import x from '../../images/x.png'
 import PropTypes from 'prop-types'
 
-function DeleteItemButton({ id = null , onClose = null }) {
+function DeleteItemButton({ id = null , onDelete = null }) {
 
     const handleClose = () => {
-        onClose(id);
+        onDelete(id);
     }
 
     return (
@@ -15,7 +15,7 @@ function DeleteItemButton({ id = null , onClose = null }) {
 }
 
 DeleteItemButton.propTypes = {
-    onClose: PropTypes.func,
+    onDelete: PropTypes.func,
     id: PropTypes.string,
 }
 

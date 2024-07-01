@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types'
 
 
-function SubmitButton({ buttonText = "Placeholder" }) {
+function SubmitButton({ buttonText = "Placeholder" , onClickAction }) {
     
     return (
         <div className="field">
-            <button type="button" className="submit-btn">{buttonText}</button>
+            <button type="button" className="submit-btn" onClick={onClickAction}>{buttonText}</button>
         </div>
     )
 }
 
 SubmitButton.propTypes = {
-    buttonText: PropTypes.string.isRequired,
+    buttonText: PropTypes.string,
+    onClickAction: PropTypes.func,
+    
     
 };
 
