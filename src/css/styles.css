@@ -4,6 +4,7 @@
     --generator-border-color: #A0A0A0;
     --submit-btn-backgr-color: #00A676;
     --preview-backgr-color: #eaeaea;
+    --list-item-color: #7600a6;
 
 
 
@@ -51,6 +52,7 @@ main {
 .field {
     position: relative;
     display: flex;
+    gap: 1rem;
     
      
 }
@@ -109,7 +111,11 @@ a {
     margin-bottom: 1rem;
 }
 
-button {
+button:hover {
+    cursor: pointer;
+}
+
+.submit-btn {
     padding: 0.5rem 1rem;
     border: 2px solid var(--submit-btn-backgr-color);
     color: var(--submit-btn-backgr-color);
@@ -117,9 +123,42 @@ button {
     background-color: var(--generator-backgr-color);
 }
 
-button:hover {
+.submit-btn:hover {
     color: var(--generator-backgr-color);
     background-color: var(--submit-btn-backgr-color);
-    cursor: pointer;
 }
 
+
+
+li {
+    list-style-type: none;
+    border: 2px solid var(--list-item-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.5rem;
+}
+
+.list-item-delete-btn {
+    
+    box-sizing: border-box;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+ul {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    
+}
+
+img {
+    width: 12px;
+    height: auto;
+    
+}
