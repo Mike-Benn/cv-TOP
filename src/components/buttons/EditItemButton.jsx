@@ -1,21 +1,21 @@
 import edit from '../../images/edit.png'
 import PropTypes from 'prop-types'
 
-function EditItemButton({ id = null , onDelete = null }) {
+function EditItemButton({ id = null , onEdit = null }) {
 
-    const handleClose = () => {
-        onDelete(id);
+    const handleEdit = () => {
+        onEdit(id);
     }
 
     return (
         <>
-            <button key={id} type="button" className={"list-item-edit-btn"} onClick={handleClose}><img src={edit} alt='Edit (Writing Utensil) button)' /></button>
+            <button key={id} type="button" className={"list-item-edit-btn"} onClick={handleEdit}><img src={edit} alt='Edit (Writing Utensil) button)' /></button>
         </>
     )
 }
 
 EditItemButton.propTypes = {
-    onDelete: PropTypes.func,
+    onEdit: PropTypes.func,
     id: PropTypes.string,
 }
 
