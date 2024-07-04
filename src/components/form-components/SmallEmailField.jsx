@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function SmallEmailField({ fieldName = "Placeholder" }) {
+function SmallEmailField({ fieldName = "Placeholder" , onInputChange , value}) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -13,6 +13,8 @@ function SmallEmailField({ fieldName = "Placeholder" }) {
                 id={forVal} 
                 className='text-input'
                 placeholder="example@site.com"
+                onChange={onInputChange}
+                value={value}
             />
         </div>
     )
@@ -20,6 +22,8 @@ function SmallEmailField({ fieldName = "Placeholder" }) {
 
 SmallEmailField.propTypes = {
     fieldName: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    onInputChange: PropTypes.func,
     
 };
 
