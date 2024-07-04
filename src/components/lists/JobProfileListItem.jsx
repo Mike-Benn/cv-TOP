@@ -3,7 +3,7 @@ import EditItemButton from '../buttons/EditItemButton'
 import DeleteItemButton from '../buttons/DeleteItemButton'
 
 
-function JobProfileListItem({ data = {} , onDelete = null , onEdit }) {
+function JobProfileListItem({ data = {} , onDelete = null , onEdit = null }) {
     return (
         /*<>
             <li key={id}>

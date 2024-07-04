@@ -4,18 +4,16 @@ import CheckboxField from './CheckboxField';
 import BulletListField from './BulletListField';
 import UnorderedList from '../lists/UnorderedList';
 import { v4 as uuidv4 } from 'uuid';
-import JobResponsibilityListItem from '../lists/JobResponsibilityListItem';
+import GeneralListItem from '../lists/GeneralListItem';
 import JobProfileListItem from '../lists/JobProfileListItem';
 import SubmitButton from '../buttons/SubmitButton';
+import { getItemWithID } from '../../utils/utils';
 import { useState } from 'react';
 
 
 
 function WorkExperienceForm() {
-
-    /*const [currJobExperienceList , setCurrJobExperienceList] = useState([]);*/
     
-
     const [currPosition , setCurrPosition] = useState("");
     const [currCompany , setCurrCompany] = useState("");
     const [currStartingDate , setCurrStartingDate] = useState("");
@@ -24,7 +22,6 @@ function WorkExperienceForm() {
     const [currJobResponsibilitiesList , setCurrJobResponsibilitiesList] = useState([]);
     const [currJobProfileList , setCurrJobProfileList] = useState([]);
 
-    /*const [currJobList , setCurrJobList] = useState([]);*/
 
     const handlePositionChange = (e) => {
         setCurrPosition(e.target.value);
@@ -65,6 +62,17 @@ function WorkExperienceForm() {
         
     }
 
+    const handleEditResponsibility = (id) => {
+        let responsibilityObject = getItemWithID(id , currJobResponsibilitiesList);
+        let responsibility = responsibilityObject.item.value;
+        let jobResponsibilityList = responsibilityObject.arr;
+
+        setCurrResponsibility(responsibility);
+        setCurrJobResponsibilitiesList(jobResponsibilityList);
+
+
+    }
+
     const handleDeleteResponsibility = (id) => {
         let updatedRespList = currJobResponsibilitiesList.filter(item =>
             id !== item.id
@@ -72,7 +80,21 @@ function WorkExperienceForm() {
         setCurrJobResponsibilitiesList(updatedRespList);
     }
     
-    const handleDeleteProfile = (id) => {
+    const handleEditJobProfile = (id) => {
+        let profileObject = getItemWithID(id , currJobProfileList);
+        let profile = profileObject.item;
+        let jobProfileList = profileObject.arr;
+
+        setCurrPosition(profile.position);
+        setCurrCompany(profile.company);
+        setCurrStartingDate(profile.startingDate);
+        setCurrEmployed(profile.stillEmployed);
+        setCurrJobResponsibilitiesList(profile.responsibilities);
+        setCurrResponsibility("");
+        setCurrJobProfileList(jobProfileList);
+    }
+
+    const handleDeleteJobProfile = (id) => {
         let updatedProfList = currJobProfileList.filter(item =>
             id !== item.id
         );
@@ -107,24 +129,24 @@ function WorkExperienceForm() {
 
     }
 
-    const JobProfileListItems = currJobProfileList.map(item =>
-        <JobProfileListItem key={item.id} data={item} onDelete={handleDeleteProfile} />
+    const jobProfileListItems = currJobProfileList.map(item =>
+        <JobProfileListItem key={item.id} data={item} onDelete={handleDeleteJobProfile} onEdit={handleEditJobProfile} />
     );
 
 
-    const JobResponsibilityListItems = currJobResponsibilitiesList.map(item => 
-        <JobResponsibilityListItem key={item.id} id={item.id} text={item.value} onClose={handleDeleteResponsibility} />
+    const jobResponsibilityListItems = currJobResponsibilitiesList.map(item => 
+        <GeneralListItem key={item.id} data={item} onDelete={handleDeleteResponsibility} onEdit={handleEditResponsibility}/>
     )
     
     return (
         <div className='form-section'>
             <h2 className='form-header'>Work Experience</h2>
-            <UnorderedList itemList={JobProfileListItems}/>
+            <UnorderedList itemList={jobProfileListItems}/>
             <SmallTextField fieldName='Title/Position' onInputChange={handlePositionChange} value={currPosition}/>
             <SmallTextField fieldName='Workplace/Company' onInputChange={handleCompanyChange} value={currCompany}/>
             <SmallMonthField fieldName='Starting Date' onInputChange={handleStartingDateChange} value={currStartingDate}/>
             <CheckboxField fieldName='Still Employed' onInputChange={handleStillEmployed} checked={currEmployed}/>
-            <BulletListField fieldName='Job Responsibilities' currInputVal={currResponsibility} onInputChange={handleCurrResponsibility} onAddChange={handleAddCurrResponsibility} itemList={JobResponsibilityListItems}/>
+            <BulletListField fieldName='Job Responsibilities' value={currResponsibility} onInputChange={handleCurrResponsibility} onAddChange={handleAddCurrResponsibility} itemList={jobResponsibilityListItems}/>
             <SubmitButton buttonText='Submit Job Profile' onClickAction={handleSubmitJobProfile} />
         </div>
 
