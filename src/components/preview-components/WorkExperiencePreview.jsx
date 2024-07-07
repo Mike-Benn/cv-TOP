@@ -1,12 +1,11 @@
 function WorkExperiencePreview() {
     return (
         <div className="preview-work-experience">
-            <h3 className="preview-section-header">Work Experience</h3>
+            <h3 className="preview-section-header">WORK EXPERIENCE</h3>
             <div className="preview-section-subheader">
-                <p className="preview-organization"></p>
-                <p className="preview-date"></p>
+                <p className="preview-organization">Computer Scientist</p>
+                <p className="preview-program">Company Inc.</p>
             </div>
-            <p className="preview-program"></p>
             <ul>
                 <li>Job Responsibility 1:</li>
                 <li>Job Responsibility 2:</li>
