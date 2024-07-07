@@ -35,7 +35,7 @@ function TechnicalSkillsForm() {
     }
 
     const handleAddCurrFrametool = () => {
-        if (currLanguage.length < 1) {
+        if (currFrametool.length < 1) {
             alert("Please type a framework or tool here.")
         } else if (currFrametoolList.length < 5) {
             let inputVal = {id: uuidv4() , value: currFrametool };
@@ -93,9 +93,9 @@ function TechnicalSkillsForm() {
     return (
         <div className='form-section'>
             <h2 className='form-header'>Technical Skills</h2>
-            <UnorderedList itemList={languageListItems} />
+            <UnorderedList itemList={languageListItems} className="language-experience-list" />
             <BulletListField fieldName='Programming Languages' onInputChange={handleLanguageChange} onAddChange={handleAddCurrLanguage} value={currLanguage} />
-            <UnorderedList itemList={frametoolListItems} />
+            <UnorderedList itemList={frametoolListItems} className="frametool-experience-list" />
             <BulletListField fieldName='Frameworks/Tools' onInputChange={handleFrametoolChange} onAddChange={handleAddCurrFrametool} value={currFrametool}/>
         </div>
     )
