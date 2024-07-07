@@ -1,13 +1,12 @@
 import './css/styles.css';
-import ResumeForm from './components/ResumeForm';
+import ResumeGenerator from './components/ResumeGenerator';
 
 function App() {
 
   return (
-    <main>
-      <ResumeForm />
-      <div></div>
-    </main>
+    <>
+      <ResumeGenerator />
+    </>
 
   )
 }
