@@ -5,7 +5,7 @@ import SubmitButton from '../buttons/SubmitButton';
 import EducationProfileListItem from '../lists/EducationProfileListItem';
 import UnorderedList from '../lists/UnorderedList';
 import { v4 as uuidv4 } from 'uuid';
-import { getProfile } from '../../utils/utils';
+import { getItemWithID } from '../../utils/utils';
 import { useState } from 'react';
 
 
@@ -63,7 +63,7 @@ function EducationInfoForm() {
     }
     
     const handleEditEducationProfile = (id) => {
-        let profileObject = getProfile(id , currEducationProfileList);
+        let profileObject = getItemWithID(id , currEducationProfileList);
         let profile = profileObject.profile;
         let educationProfileList = profileObject.arr;
 
@@ -91,7 +91,7 @@ function EducationInfoForm() {
     return (
         <div className='form-section'>
             <h2 className='form-header'>Education</h2>
-            <UnorderedList itemList={educationProfileListItems} />
+            <UnorderedList itemList={educationProfileListItems} className="education-experience-list" />
             <SmallTextField fieldName='University/Organization' placeHolder='University of Illinois' onInputChange={handleOrganizationChange} value={currOrganization}/>
             <SmallTextField fieldName='Program/Degree' placeHolder='BS in Computer Science' onInputChange={handleProgramChange} value={currProgram}/>
             <CheckboxField fieldName='Still Enrolled' onInputChange={handleStillEnrolled} checked={currEnrolled} value={currEnrolled}/>

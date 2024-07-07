@@ -15,6 +15,7 @@ function SmallTextField({ fieldName = "Placeholder" , placeHolder = "" , onInput
                 onChange={onInputChange}
                 value={value}
                 
+                
             />
         </div>
         
