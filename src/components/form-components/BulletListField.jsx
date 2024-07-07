@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
-
 import UnorderedList from '../lists/UnorderedList';
 
 
-function BulletListField({ fieldName = "Placeholder" , onInputChange , onAddChange , value , itemList  }) {
+function BulletListField({ fieldName = "Placeholder" , onInputChange , onAddChange , value , itemList , classIdentifier  }) {
     
     let forVal = fieldName.split(' ').join('');
     
     return (
         
         <div className="bullet-field">
-            <UnorderedList itemList={itemList} className="job-experience-list" />
+            <UnorderedList itemList={itemList} className={classIdentifier} />
             <div className="field">
                 <label htmlFor={forVal} className="field-label">{fieldName}</label>
                 <input 
@@ -30,6 +29,7 @@ function BulletListField({ fieldName = "Placeholder" , onInputChange , onAddChan
 }
 
 BulletListField.propTypes = {
+    classIdentifier: PropTypes.string,
     fieldName: PropTypes.string.isRequired,
     value: PropTypes.string,
     onInputChange: PropTypes.func,
