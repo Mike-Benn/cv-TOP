@@ -6,7 +6,7 @@ import DeleteItemButton from '../buttons/DeleteItemButton'
 function GeneralListItem({ data = {} , onDelete = null , onEdit = null}) {
     return (
         <>
-            <li key={data.id}>
+            <li className='generator-list-item' key={data.id}>
                 <p>{data.value}</p>
                 <div className="list-btn-container">
                     <EditItemButton id={data.id} onEdit={onEdit} />
