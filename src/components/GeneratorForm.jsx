@@ -5,7 +5,7 @@ import EducationInfoForm from './form-components/EducationInfoForm';
 import WorkExperienceForm from './form-components/WorkExperienceForm';
 import TechnicalSkillsForm from './form-components/TechnicalSkillsForm';
 
-function ResumeForm() {
+function GeneratorForm() {
 
   return (
 
@@ -22,6 +22,6 @@ function ResumeForm() {
   )
 }
 
-export default ResumeForm
+export default GeneratorForm
 
 
