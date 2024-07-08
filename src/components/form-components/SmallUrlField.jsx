@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function SmallUrlField({ fieldName = "Placeholder" }) {
+function SmallUrlField({ fieldName = "Placeholder" , onInputChange }) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -13,6 +13,7 @@ function SmallUrlField({ fieldName = "Placeholder" }) {
                 id={forVal} 
                 className='text-input'
                 placeholder='www.mywebsite.com'
+                onChange={onInputChange}
             />
         </div>
     )
@@ -20,6 +21,7 @@ function SmallUrlField({ fieldName = "Placeholder" }) {
 
 SmallUrlField.propTypes = {
     fieldName: PropTypes.string.isRequired,
+    onInputChange: PropTypes.func,
 
 };
 

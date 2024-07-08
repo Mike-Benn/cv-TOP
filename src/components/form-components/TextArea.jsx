@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function TextArea({ fieldName = "Placeholder" }) {
+function TextArea({ fieldName = "Placeholder" , onInputChange }) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -9,7 +9,8 @@ function TextArea({ fieldName = "Placeholder" }) {
             <textarea 
                 name={forVal} 
                 id={forVal}
-                className='text-input'>
+                className='text-input'
+                onChange={onInputChange}>
             </textarea>
         </div>
     );
@@ -17,6 +18,7 @@ function TextArea({ fieldName = "Placeholder" }) {
 
 TextArea.propTypes = {
     fieldName: PropTypes.string.isRequired,
+    onInputChange: PropTypes.func,
 };
 
 export default TextArea;

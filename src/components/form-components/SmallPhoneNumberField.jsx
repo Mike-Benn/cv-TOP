@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function SmallPhoneNumberField({ fieldName = "Placeholder" }) {
+function SmallPhoneNumberField({ fieldName = "Placeholder" , onInputChange }) {
     let forVal = fieldName.split(' ').join('');
 
     return (
@@ -13,6 +13,7 @@ function SmallPhoneNumberField({ fieldName = "Placeholder" }) {
                 id={forVal} 
                 className='text-input'
                 placeholder='###-###-####'
+                onChange={onInputChange}
             />
         </div>
     )
@@ -20,6 +21,7 @@ function SmallPhoneNumberField({ fieldName = "Placeholder" }) {
 
 SmallPhoneNumberField.propTypes = {
     fieldName: PropTypes.string.isRequired,
+    onInputChange: PropTypes.func,
 };
 
 export default SmallPhoneNumberField
