@@ -3,18 +3,16 @@ import SmallMonthField from './SmallMonthField';
 import CheckboxField from './CheckboxField';
 import BulletListField from './BulletListField';
 import UnorderedList from '../lists/UnorderedList';
-import { v4 as uuidv4 } from 'uuid';
 import GeneralListItem from '../lists/GeneralListItem';
 import JobProfileListItem from '../lists/JobProfileListItem';
 import SubmitButton from '../buttons/SubmitButton';
-import { getItemWithID } from '../../utils/utils';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 
 
-function WorkExperienceForm() {
+function WorkExperienceForm({ workExperienceData }) {
     
-    const [currPosition , setCurrPosition] = useState("");
+    /*const [currPosition , setCurrPosition] = useState("");
     const [currCompany , setCurrCompany] = useState("");
     const [currStartingDate , setCurrStartingDate] = useState("");
     const [currEmployed , setCurrEmployed] = useState(false);
@@ -50,7 +48,9 @@ function WorkExperienceForm() {
     }
 
     const handleAddCurrResponsibility = () => {
-        if (currJobResponsibilitiesList.length < 5) {
+        if (currResponsibility.length < 1) {
+            alert("Please type your job responsibility here.");
+        } else if (currJobResponsibilitiesList.length < 5) {
             let inputVal = {id: uuidv4() , value: currResponsibility };
             let updatedRespList = currJobResponsibilitiesList.concat([inputVal]);
             setCurrJobResponsibilitiesList(updatedRespList);
@@ -113,13 +113,13 @@ function WorkExperienceForm() {
             }
             let updatedProfileList = currJobProfileList.concat([profile]);
             setCurrJobProfileList(updatedProfileList);
-            resetForm();
+            resetWorkExperienceForm();
         } else {
             alert("Please submit no more than three job profiles.");
         }
     }
 
-    const resetForm = () => {
+    const resetWorkExperienceForm = () => {
         setCurrPosition("");
         setCurrCompany("");
         setCurrStartingDate("");
@@ -127,30 +127,34 @@ function WorkExperienceForm() {
         setCurrJobResponsibilitiesList([]);
         setCurrResponsibility("");
 
-    }
+    }*/
 
-    const jobProfileListItems = currJobProfileList.map(item =>
-        <JobProfileListItem key={item.id} data={item} onDelete={handleDeleteJobProfile} onEdit={handleEditJobProfile} />
+    const jobProfileListItems = workExperienceData.workExperienceValues.currJobProfileList.map(item =>
+        <JobProfileListItem key={item.id} data={item} onDelete={workExperienceData.workExperienceListeners.handleDeleteJobProfile} onEdit={workExperienceData.workExperienceListeners.handleEditJobProfile} />
     );
 
 
-    const jobResponsibilityListItems = currJobResponsibilitiesList.map(item => 
-        <GeneralListItem key={item.id} data={item} onDelete={handleDeleteResponsibility} onEdit={handleEditResponsibility}/>
+    const jobResponsibilityListItems = workExperienceData.workExperienceValues.currJobResponsibilitiesList.map(item => 
+        <GeneralListItem key={item.id} data={item} onDelete={workExperienceData.workExperienceListeners.handleDeleteResponsibility} onEdit={workExperienceData.workExperienceListeners.handleEditResponsibility}/>
     )
     
     return (
         <div className='form-section'>
             <h2 className='form-header'>Work Experience</h2>
-            <UnorderedList itemList={jobProfileListItems}/>
-            <SmallTextField fieldName='Title/Position' onInputChange={handlePositionChange} value={currPosition}/>
-            <SmallTextField fieldName='Workplace/Company' onInputChange={handleCompanyChange} value={currCompany}/>
-            <SmallMonthField fieldName='Starting Date' onInputChange={handleStartingDateChange} value={currStartingDate}/>
-            <CheckboxField fieldName='Still Employed' onInputChange={handleStillEmployed} checked={currEmployed}/>
-            <BulletListField fieldName='Job Responsibilities' value={currResponsibility} onInputChange={handleCurrResponsibility} onAddChange={handleAddCurrResponsibility} itemList={jobResponsibilityListItems}/>
-            <SubmitButton buttonText='Submit Job Profile' onClickAction={handleSubmitJobProfile} />
+            <UnorderedList itemList={jobProfileListItems} className="job-profile-list"/>
+            <SmallTextField fieldName='Title/Position' onInputChange={workExperienceData.workExperienceListeners.handlePositionChange} value={workExperienceData.workExperienceValues.currPosition}/>
+            <SmallTextField fieldName='Workplace/Company' onInputChange={workExperienceData.workExperienceListeners.handleCompanyChange} value={workExperienceData.workExperienceValues.currCompany}/>
+            <SmallMonthField fieldName='Starting Date' onInputChange={workExperienceData.workExperienceListeners.handleStartingDateChange} value={workExperienceData.workExperienceValues.currStartingDate}/>
+            <CheckboxField fieldName='Still Employed' onInputChange={workExperienceData.workExperienceListeners.handleStillEmployed} checked={workExperienceData.workExperienceValues.currEmployed}/>
+            <BulletListField fieldName='Job Responsibilities' value={workExperienceData.workExperienceValues.currResponsibility} onInputChange={workExperienceData.workExperienceListeners.handleCurrResponsibility} onAddChange={workExperienceData.workExperienceListeners.handleAddCurrResponsibility} itemList={jobResponsibilityListItems}/>
+            <SubmitButton buttonText='Submit Job Profile' onClickAction={workExperienceData.workExperienceListeners.handleSubmitJobProfile} />
         </div>
 
     )
+}
+
+WorkExperienceForm.propTypes = {
+    workExperienceData: PropTypes.object,
 }
 
 export default WorkExperienceForm;

@@ -1,16 +1,14 @@
 import SmallTextField from './SmallTextField';
-import SmallNumberField from './SmallNumberField';
 import CheckboxField from './CheckboxField';
 import SubmitButton from '../buttons/SubmitButton';
 import EducationProfileListItem from '../lists/EducationProfileListItem';
 import UnorderedList from '../lists/UnorderedList';
-import { v4 as uuidv4 } from 'uuid';
-import { getItemWithID } from '../../utils/utils';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 
-function EducationInfoForm() {
 
+function EducationInfoForm({ educationInfoData }) {
+/*
     const [currOrganization , setCurrOrganization] = useState("");
     const [currProgram , setCurrProgram] = useState("");
     const [currEnrolled, setCurrEnrolled] = useState(false);
@@ -82,9 +80,9 @@ function EducationInfoForm() {
         setCurrGPA("");
 
     }
-
-    const educationProfileListItems = currEducationProfileList.map(item =>
-        <EducationProfileListItem key={item.id} data={item} onDelete={handleDeleteEducationProfile} onEdit={handleEditEducationProfile} />
+*/
+    const educationProfileListItems = educationInfoData.educationInfoValues.currEducationProfileList.map(item =>
+        <EducationProfileListItem key={item.id} data={item} onDelete={educationInfoData.educationInfoListeners.handleDeleteEducationProfile} onEdit={educationInfoData.educationInfoListeners.handleEditEducationProfile} />
     )
 
 
@@ -92,13 +90,16 @@ function EducationInfoForm() {
         <div className='form-section'>
             <h2 className='form-header'>Education</h2>
             <UnorderedList itemList={educationProfileListItems} className="education-experience-list" />
-            <SmallTextField fieldName='University/Organization' placeHolder='University of Illinois' onInputChange={handleOrganizationChange} value={currOrganization}/>
-            <SmallTextField fieldName='Program/Degree' placeHolder='BS in Computer Science' onInputChange={handleProgramChange} value={currProgram}/>
-            <CheckboxField fieldName='Still Enrolled' onInputChange={handleStillEnrolled} checked={currEnrolled} value={currEnrolled}/>
-            <SmallNumberField fieldName='GPA (optional)' onInputChange={handleGPAChange} value={currGPA}/>
-            <SubmitButton buttonText='Submit Education Background' onClickAction={handleSubmitEducationProfile}/>
+            <SmallTextField fieldName='University/Organization' placeHolder='University of Illinois' onInputChange={educationInfoData.educationInfoListeners.handleOrganizationChange} value={educationInfoData.educationInfoValues.currOrganization}/>
+            <SmallTextField fieldName='Program/Degree' placeHolder='BS in Computer Science' onInputChange={educationInfoData.educationInfoListeners.handleProgramChange} value={educationInfoData.educationInfoValues.currProgram}/>
+            <CheckboxField fieldName='Still Enrolled' onInputChange={educationInfoData.educationInfoListeners.handleStillEnrolled} checked={educationInfoData.educationInfoValues.currEnrolled} value={educationInfoData.educationInfoValues.currEnrolled}/>
+            <SubmitButton buttonText='Submit Education Background' onClickAction={educationInfoData.educationInfoListeners.handleSubmitEducationProfile}/>
         </div>
     )
+}
+
+EducationInfoForm.propTypes = {
+    educationInfoData: PropTypes.object,
 }
 
 export default EducationInfoForm;

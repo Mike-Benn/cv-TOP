@@ -1,10 +1,10 @@
 
 import TextArea from './TextArea';
 import SmallTextField from './SmallTextField';
-import { useState } from 'react';
+import PropTypes from 'prop-types'
 
-function PersonalInfoForm() {
-
+function PersonalInfoForm({ personalInfoData }) {
+/*
     const [currFirstName , setCurrFirstName] = useState("");
     const [currLastName , setCurrLastName] = useState("");
     const [currTitle , setCurrTitle] = useState("");
@@ -24,17 +24,23 @@ function PersonalInfoForm() {
 
     const handleSummaryChange = (e) => {
         setCurrSummary(e.target.value);
-    }
+    }*/
 
     return (
         <div className='form-section'>
             <h2 className='form-header'>Personal Info</h2>
-            <SmallTextField fieldName='First Name' onInputChange={handleFirstNameChange} value={currFirstName}/>
-            <SmallTextField fieldName='Last Name' onInputChange={handleLastNameChange} value={currLastName}/>
-            <SmallTextField fieldName='Professional title' onInputChange={handleTitleChange} value={currTitle}/>
-            <TextArea fieldName='Give a short summary about yourself' onInputChange={handleSummaryChange} value={currSummary}/>
+            <SmallTextField fieldName='First Name' onInputChange={personalInfoData.personalInfoListeners.handleFirstNameChange} value={personalInfoData.personalInfoValues.currFirstName}/>
+            <SmallTextField fieldName='Last Name' onInputChange={personalInfoData.personalInfoListeners.handleLastNameChange} value={personalInfoData.personalInfoValues.currLastName}/>
+            <SmallTextField fieldName='Professional title' onInputChange={personalInfoData.personalInfoListeners.handleTitleChange} value={personalInfoData.personalInfoValues.currTitle}/>
+            <TextArea fieldName='Give a short summary about yourself' onInputChange={personalInfoData.personalInfoListeners.handleSummaryChange} value={personalInfoData.personalInfoValues.currSummary}/>
         </div>
     )
+}
+
+PersonalInfoForm.propTypes = {
+    personalInfoData: PropTypes.object,
+    
+
 }
 
 export default PersonalInfoForm;

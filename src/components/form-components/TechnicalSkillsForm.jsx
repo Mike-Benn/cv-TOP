@@ -1,13 +1,13 @@
-import { useState } from 'react';
+
 import BulletListField from './BulletListField';
-import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types'
 import GeneralListItem from '../lists/GeneralListItem';
 import UnorderedList from '../lists/UnorderedList';
-import { getItemWithID } from '../../utils/utils';
 
 
-function TechnicalSkillsForm() {
 
+function TechnicalSkillsForm({ technicalSkillsData }) {
+    /*
     const [currLanguage , setCurrLanguage] = useState("");
     const [currFrametool , setCurrFrametool] = useState("");
     const [currLanguageList , setCurrLanguageList] = useState([]);
@@ -80,25 +80,29 @@ function TechnicalSkillsForm() {
     }
 
     
+    */
 
-
-    const languageListItems = currLanguageList.map(item =>
-        <GeneralListItem key={item.id} data={item} onDelete={handleDeleteLanguage} onEdit={handleEditLanguage} />
+    const languageListItems = technicalSkillsData.technicalSkillsValues.currLanguageList.map(item =>
+        <GeneralListItem key={item.id} data={item} onDelete={technicalSkillsData.technicalSkillsListeners.handleDeleteLanguage} onEdit={technicalSkillsData.technicalSkillsListeners.handleEditLanguage} />
     )
 
-    const frametoolListItems = currFrametoolList.map(item => 
-        <GeneralListItem key={item.id} data={item} onDelete={handleDeleteFrametool} onEdit={handleEditFrametool} />
+    const frametoolListItems = technicalSkillsData.technicalSkillsValues.currFrametoolList.map(item => 
+        <GeneralListItem key={item.id} data={item} onDelete={technicalSkillsData.technicalSkillsListeners.handleDeleteFrametool} onEdit={technicalSkillsData.technicalSkillsListeners.handleEditFrametool} />
     )
 
     return (
         <div className='form-section'>
             <h2 className='form-header'>Technical Skills</h2>
             <UnorderedList itemList={languageListItems} className="language-experience-list" />
-            <BulletListField fieldName='Programming Languages' onInputChange={handleLanguageChange} onAddChange={handleAddCurrLanguage} value={currLanguage} />
+            <BulletListField fieldName='Programming Languages' onInputChange={technicalSkillsData.technicalSkillsListeners.handleLanguageChange} onAddChange={technicalSkillsData.technicalSkillsListeners.handleAddCurrLanguage} value={technicalSkillsData.technicalSkillsValues.currLanguage} />
             <UnorderedList itemList={frametoolListItems} className="frametool-experience-list" />
-            <BulletListField fieldName='Frameworks/Tools' onInputChange={handleFrametoolChange} onAddChange={handleAddCurrFrametool} value={currFrametool}/>
+            <BulletListField fieldName='Frameworks/Tools' onInputChange={technicalSkillsData.technicalSkillsListeners.handleFrametoolChange} onAddChange={technicalSkillsData.technicalSkillsListeners.handleAddCurrFrametool} value={technicalSkillsData.technicalSkillsValues.currFrametool}/>
         </div>
     )
+}
+
+TechnicalSkillsForm.propTypes = {
+    technicalSkillsData: PropTypes.object,
 }
 
 export default TechnicalSkillsForm;
