@@ -4,9 +4,10 @@ import ContactInfoForm from './form-components/ContactInfoForm';
 import EducationInfoForm from './form-components/EducationInfoForm';
 import WorkExperienceForm from './form-components/WorkExperienceForm';
 import TechnicalSkillsForm from './form-components/TechnicalSkillsForm';
+import ProjectsForm from './form-components/ProjectsForm';
 import PropTypes from 'prop-types';
 
-function GeneratorForm({ personalInfoData , contactInfoData , educationInfoData , workExperienceData , technicalSkillsData }) {
+function GeneratorForm({ personalInfoData , contactInfoData , educationInfoData , workExperienceData , technicalSkillsData , projectsData }) {
 
   return (
 
@@ -16,6 +17,7 @@ function GeneratorForm({ personalInfoData , contactInfoData , educationInfoData 
       <ContactInfoForm contactInfoData={contactInfoData}/>
       <EducationInfoForm educationInfoData={educationInfoData}/>
       <WorkExperienceForm workExperienceData={workExperienceData}/>
+      <ProjectsForm projectsData={projectsData}/>
       <TechnicalSkillsForm technicalSkillsData={technicalSkillsData}/>
     </section>
     
@@ -29,6 +31,7 @@ GeneratorForm.propTypes = {
   educationInfoData: PropTypes.object,
   workExperienceData: PropTypes.object,
   technicalSkillsData: PropTypes.object,
+  projectsData: PropTypes.object,
 }
 
 export default GeneratorForm

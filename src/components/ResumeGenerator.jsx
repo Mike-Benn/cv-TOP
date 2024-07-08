@@ -334,19 +334,182 @@ function ResumeGenerator() {
         workExperienceListeners,
     }
 
+    // Projects state management //
+
+    const [currProjectName , setCurrProjectName] = useState("");
+    const [currTechnology , setCurrTechnology] = useState("");
+    const [currProjectObjective , setCurrProjectObjective] = useState("");
+    const [currTechnologyList , setCurrTechnologyList] = useState([]);
+    const [currProjectObjectiveList, setCurrProjectObjectiveList] = useState([]);
+    const [currProjectList , setCurrProjectList] = useState([]);
+
+    const handleCurrProjectNameChange = (e) => {
+        setCurrProjectName(e.target.value);
+    }
+
+    const handleCurrTechnologyChange = (e) => {
+        setCurrTechnology(e.target.value);
+    }
+
+    const handleCurrProjectObjectiveChange = (e) => {
+        setCurrProjectObjective(e.target.value);
+    }
+
+    const handleAddCurrTechnology = () => {
+        if (currTechnologyList.length < 5) {
+            let inputVal = {id: uuidv4() , value: currTechnology};
+            let updatedTechnologyList = currTechnologyList.concat([inputVal]);
+            setCurrTechnologyList(updatedTechnologyList);
+            setCurrTechnology("");
+        } else {
+            alert("Please list at max the five most relevant languages or tools that you used on this project.")
+        }
+    }
+
+    const handleAddCurrProjectObjective = () => {
+        if (currProjectObjectiveList.length < 5) {
+            let inputVal = {id: uuidv4() , value: currProjectObjective};
+            let updatedProjectObjectiveList = currProjectObjectiveList.concat([inputVal]);
+            setCurrProjectObjectiveList(updatedProjectObjectiveList);
+            setCurrProjectObjective("");
+        } else {
+            alert("Please list at max the five most relevant objectives or accomplishments related to this project.")
+        }
+    }
+
+    const handleDeleteTechnology = (id) => {
+        let updatedTechnologyList = currTechnologyList.filter(item =>
+            id !== item.id
+        );
+        setCurrTechnologyList(updatedTechnologyList);
+    }
+
+    const handleDeleteProjectObjective = (id) => {
+        let updatedProjectObjectiveList = currProjectObjectiveList.filter(item =>
+            id !== item.id
+        );
+        setCurrProjectObjectiveList(updatedProjectObjectiveList);
+    }
+
+    const handleEditTechnology = (id) => {
+        let technologyObject = getItemWithID(id , currTechnologyList);
+        let technology = technologyObject.item.value;
+        let technologyList = technologyObject.arr;
+
+        setCurrTechnology(technology);
+        setCurrTechnologyList(technologyList);
+    }
+
+    const handleEditProjectObjective = (id) => {
+        let objectiveObject = getItemWithID(id , currProjectObjectiveList);
+        let objective = objectiveObject.item.value;
+        let objectiveList = objectiveObject.arr;
+
+        setCurrProjectObjective(objective);
+        setCurrProjectObjectiveList(objectiveList);
+    }
+
+    const handleSubmitProject = () => {
+        if (currProjectList.length < 3) {
+            let project = {
+                id: uuidv4(),
+                name: currProjectName,
+                technologies: currTechnologyList,
+                objectives: currProjectObjectiveList,
+            }
+            let updatedProjectList = currProjectList.concat([project]);
+            setCurrProjectList(updatedProjectList);
+            resetProjectsForm();
+        } else {
+            alert("Please submit no more than three projects.")
+        }
+    }
+
+    const handleEditProject = (id) => {
+        let projectObject = getItemWithID(id , currProjectList);
+        let project = projectObject.item;
+        let projectList = projectObject.arr;
+
+        setCurrProjectName(project.name);
+        setCurrTechnologyList(project.technologies);
+        setCurrProjectObjectiveList(project.objectives);
+        setCurrProjectList(projectList);
+
+
+    }
+
+    const handleDeleteProject = (id) => {
+        let updatedProjectList = currProjectList.filter(item =>
+            id !== item.id
+        );
+        setCurrProjectList(updatedProjectList);
+    }
+
+    
+    
+    const resetProjectsForm = () => {
+        setCurrProjectName("");
+        setCurrProjectObjective("");
+        setCurrTechnology("");
+        setCurrProjectObjectiveList([]);
+        setCurrTechnologyList([]);
+    }
+
+    const projectsValues = {
+        currProjectName,
+        currTechnology,
+        currProjectObjective,
+        currTechnologyList,
+        currProjectObjectiveList,
+        currProjectList,
+    }
+
+    const projectsListeners = {
+        handleCurrProjectNameChange,
+        handleCurrTechnologyChange,
+        handleCurrProjectObjectiveChange,
+        handleAddCurrTechnology,
+        handleAddCurrProjectObjective,
+        handleDeleteTechnology,
+        handleDeleteProjectObjective,
+        handleEditTechnology,
+        handleEditProjectObjective,
+        handleSubmitProject,
+        handleEditProject,
+        handleDeleteProject,
+
+    }
+
+    const projectsData = {
+        projectsValues,
+        projectsListeners,
+    }
+
     // Technical Skills Form state management //
 
     const [currLanguage , setCurrLanguage] = useState("");
-    const [currFrametool , setCurrFrametool] = useState("");
+    const [currFramework , setCurrFramework] = useState("");
+    const [currDevTool , setCurrDevTool] = useState("");
+    const [currLibrary , setCurrLibrary] = useState("");
     const [currLanguageList , setCurrLanguageList] = useState([]);
-    const [currFrametoolList , setCurrFrametoolList] = useState([]);
+    const [currFrameworkList , setCurrFrameworkList] = useState([]);
+    const [currDevToolList , setCurrDevToolList] = useState([]);
+    const [currLibraryList , setCurrLibraryList] = useState([]);
 
     const handleLanguageChange = (e) => {
         setCurrLanguage(e.target.value);
     }
 
-    const handleFrametoolChange = (e) => {
-        setCurrFrametool(e.target.value);
+    const handleFrameworkChange = (e) => {
+        setCurrFramework(e.target.value);
+    }
+
+    const handleDevToolChange = (e) => {
+        setCurrDevTool(e.target.value);
+    }
+
+    const handleLibraryChange = (e) => {
+        setCurrLibrary(e.target.value);
     }
 
     const handleAddCurrLanguage = () => {
@@ -362,17 +525,71 @@ function ResumeGenerator() {
         }
     }
 
-    const handleAddCurrFrametool = () => {
-        if (currFrametool.length < 1) {
+    const handleAddCurrFramework = () => {
+        if (currFramework.length < 1) {
             alert("Please type a framework or tool here.")
-        } else if (currFrametoolList.length < 5) {
-            let inputVal = {id: uuidv4() , value: currFrametool };
-            let updatedFrametoolList = currFrametoolList.concat([inputVal]);
-            setCurrFrametoolList(updatedFrametoolList);
-            setCurrFrametool("");
+        } else if (currFrameworkList.length < 5) {
+            let inputVal = {id: uuidv4() , value: currFramework };
+            let updatedFrameworkList = currFrameworkList.concat([inputVal]);
+            setCurrFrameworkList(updatedFrameworkList);
+            setCurrFramework("");
         } else {
-            alert("Please list at max five frameworks, tools, or software ideologies that you feel you are most comfortable working with and represesnts you as a programmer.");
+            alert("Please list at max five different frameworks that you feel you are most comfortable working with.");
         }
+    }
+
+    const handleAddCurrDevTool = () => {
+        if (currDevToolList.length < 5) {
+            let inputVal = {id: uuidv4() , value: currDevTool};
+            let updatedDevToolList = currDevToolList.concat([inputVal]);
+            setCurrDevToolList(updatedDevToolList);
+            setCurrDevTool("");
+        } else {
+            alert("Please list at max five different developer tools that you feel you are most comfortable working with.")
+        }
+    }
+
+    const handleAddCurrLibrary = () => {
+        if (currLibraryList.length < 5) {
+            let inputVal = {id: uuidv4() , value: currLibrary};
+            let updatedLibraryList = currLibraryList.concat([inputVal]);
+            setCurrLibraryList(updatedLibraryList);
+            setCurrLibrary("");
+        } else {
+            alert("Please list at max five different libraries that you feel you are most comfortable working with.")
+        }
+    }
+
+    const handleDeleteDevTool = (id) => {
+        let updatedDevToolList = currDevToolList.filter(item =>
+            id !== item.id
+        );
+        setCurrDevToolList(updatedDevToolList);
+    }
+
+    const handleEditDevTool = (id) => {
+        let devToolObject = getItemWithID(id , currDevToolList);
+        let devTool = devToolObject.item.value;
+        let devToolList = devToolObject.arr;
+
+        setCurrDevTool(devTool);
+        setCurrDevToolList(devToolList);
+    }
+
+    const handleDeleteLibrary = (id) => {
+        let updatedLibraryList = currLibraryList.filter(item =>
+            id !== item.id
+        );
+        setCurrLibraryList(updatedLibraryList);
+    }
+
+    const handleEditLibrary = (id) => {
+        let libraryObject = getItemWithID(id , currLibraryList);
+        let library = libraryObject.item.value;
+        let libraryList = libraryObject.arr;
+
+        setCurrLibrary(library);
+        setCurrLibraryList(libraryList);
     }
 
     const handleDeleteLanguage = (id) => {
@@ -391,38 +608,50 @@ function ResumeGenerator() {
         setCurrLanguageList(languageList);
     }
 
-    const handleDeleteFrametool = (id) => {
-        let updatedFrametoolList = currFrametoolList.filter(item => 
+    const handleDeleteFramework = (id) => {
+        let updatedFrameworkList = currFrameworkList.filter(item => 
             id !== item.id
         );
-        setCurrFrametoolList(updatedFrametoolList);
+        setCurrFrameworkList(updatedFrameworkList);
     }
 
-    const handleEditFrametool = (id) => {
-        let frametoolObject = getItemWithID(id , currFrametoolList);
-        let frametool = frametoolObject.item.value;
-        let frametoolList = frametoolObject.arr;
+    const handleEditFramework = (id) => {
+        let frameworkObject = getItemWithID(id , currFrameworkList);
+        let framework = frameworkObject.item.value;
+        let frameworkList = frameworkObject.arr;
 
-        setCurrFrametool(frametool);
-        setCurrFrametoolList(frametoolList);
+        setCurrFramework(framework);
+        setCurrFrameworkList(frameworkList);
     }
     
     const technicalSkillsValues = {
         currLanguage,
-        currFrametool,
+        currFramework,
+        currDevTool,
+        currLibrary,
         currLanguageList,
-        currFrametoolList,
+        currFrameworkList,
+        currDevToolList,
+        currLibraryList,
     }
 
     const technicalSkillsListeners = {
         handleLanguageChange,
-        handleFrametoolChange,
+        handleFrameworkChange,
+        handleDevToolChange,
+        handleLibraryChange,
         handleAddCurrLanguage,
-        handleAddCurrFrametool,
+        handleAddCurrFramework,
+        handleAddCurrDevTool,
+        handleAddCurrLibrary,
         handleDeleteLanguage,
         handleEditLanguage,
-        handleDeleteFrametool,
-        handleEditFrametool,
+        handleDeleteFramework,
+        handleEditFramework,
+        handleDeleteDevTool,
+        handleEditDevTool,
+        handleDeleteLibrary,
+        handleEditLibrary,
     }
 
     const technicalSkillsData = {
@@ -434,8 +663,8 @@ function ResumeGenerator() {
 
     return (
         <main>
-            <GeneratorForm personalInfoData={personalInfoData} contactInfoData={contactInfoData} educationInfoData={educationInfoData} workExperienceData={workExperienceData} technicalSkillsData={technicalSkillsData}/>
-            <PreviewForm personalInfoValues={personalInfoValues} contactInfoValues={contactInfoValues} educationInfoValues={educationInfoValues} workExperienceValues={workExperienceValues} technicalSkillsValues={technicalSkillsValues}/>
+            <GeneratorForm personalInfoData={personalInfoData} contactInfoData={contactInfoData} educationInfoData={educationInfoData} workExperienceData={workExperienceData} technicalSkillsData={technicalSkillsData} projectsData={projectsData}/>
+            <PreviewForm personalInfoValues={personalInfoValues} contactInfoValues={contactInfoValues} educationInfoValues={educationInfoValues} workExperienceValues={workExperienceValues} technicalSkillsValues={technicalSkillsValues} projectsValues={projectsValues}/>
         </main>
     )
 }

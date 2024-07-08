@@ -1,29 +1,22 @@
 import EducationInfoPreview from "./preview-components/EducationInfoPreview";
 import WorkExperiencePreview from "./preview-components/WorkExperiencePreview";
 import PersonalInfoPreview from "./preview-components/PersonalInfoPreview";
-import ContactInfoPreview from "./preview-components/ContactInfoPreview";
 import TechnicalSkillsPreview from "./preview-components/TechnicalSkillsPreview";
+import ProjectsPreview from "./preview-components/ProjectsPreview";
 import PropTypes from 'prop-types';
 
-function PreviewForm({ personalInfoValues , contactInfoValues , educationInfoValues , workExperienceValues , technicalSkillsValues}) {
+function PreviewForm({ personalInfoValues , contactInfoValues , educationInfoValues , workExperienceValues , projectsValues , technicalSkillsValues}) {
     return (
-    <section className="preview">
-        <div className="preview-container">
-            <div className="preview-header">
-                <PersonalInfoPreview personalInfoValues={personalInfoValues}/>
-                <ContactInfoPreview contactInfoValues={contactInfoValues}/>
+        <section className="preview">
+            <div className="preview-container">
+                <PersonalInfoPreview personalInfoValues={personalInfoValues} contactInfoValues={contactInfoValues} />
+                <EducationInfoPreview educationInfoValues={educationInfoValues} />
+                <WorkExperiencePreview workExperienceValues={workExperienceValues} />
+                <ProjectsPreview projectsValues={projectsValues} />
+                <TechnicalSkillsPreview technicalSkillsValues={technicalSkillsValues} />
+
             </div>
-            <div className="preview-body">
-                <div className="preview-body-left">
-                    <EducationInfoPreview educationInfoValues={educationInfoValues}/>
-                    <WorkExperiencePreview workExperienceValues={workExperienceValues}/>
-                </div>
-                <div className="preview-body-right">
-                    <TechnicalSkillsPreview technicalSkillsValues={technicalSkillsValues}/>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
     )
 
     
@@ -35,6 +28,7 @@ PreviewForm.propTypes = {
     educationInfoValues: PropTypes.object,
     workExperienceValues: PropTypes.object,
     technicalSkillsValues: PropTypes.object,
+    projectsValues: PropTypes.object,
 }
 
 export default PreviewForm
