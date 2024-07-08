@@ -6,7 +6,7 @@ import DeleteItemButton from '../buttons/DeleteItemButton'
 function EducationProfileListItem({ data = {} , onDelete = null , onEdit = null }) {
     return (
         <>
-            <li key={data.id}>
+            <li className='generator-list-item' key={data.id}>
                 <p>{`${data.organization} / ${data.program}`}</p>
                 <div className="list-btn-container">
                     <EditItemButton id={data.id} onEdit={onEdit} />
