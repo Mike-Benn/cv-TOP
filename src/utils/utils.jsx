@@ -1,4 +1,4 @@
-export { getItemWithID }
+export { getItemWithID , createStringFromList }
 
 function getItemWithID(id , arr) {
     let arrCopy = [...arr];
@@ -11,3 +11,14 @@ function getItemWithID(id , arr) {
     }
 }
 
+function createStringFromList(arr) {
+    let result = "";
+    let length = arr.length;
+    for (let i = 0; i < length; i++) {
+        if (i === length - 1) {
+            result = result + arr[i].value;
+            return result;
+        }
+        result = arr[i].value + " ";
+    }
+}
