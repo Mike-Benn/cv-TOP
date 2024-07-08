@@ -6,14 +6,9 @@ function EducationProfile({ item }) {
     return (
         <div className="preview-education-profile">
             <div className="preview-section-subheader">
-                <p className="preview-organization">{item.organization}</p>
-                <p className="preview-program">{item.program}</p>
+                <p className="preview-topic">{item.organization}</p>
+                <p className="preview-subtopic">{item.program}</p>
             </div>
-            <ul>
-                <li>Awards</li>
-                <li>Organizations</li>
-                <li>Courses</li>
-            </ul>
         </div>
     )
     
@@ -21,7 +16,7 @@ function EducationProfile({ item }) {
 }
 
 EducationProfile.propTypes = {
-    item: PropTypes.func,
+    item: PropTypes.object,
 }
 
 export default EducationProfile
