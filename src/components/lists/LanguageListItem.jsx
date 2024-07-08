@@ -13,7 +13,7 @@ function LanguageListItem({ item }) {
 }
 
 LanguageListItem.propTypes = {
-    item: PropTypes.func,
+    item: PropTypes.object,
 }
 
 export default LanguageListItem
