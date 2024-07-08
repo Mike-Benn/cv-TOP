@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
-
+import ResponsibilityListItem from '../lists/ResponsibilityListItem';
 
 function WorkProfile({ item }) {
+    
+    const responsibilities = item.responsibilities.map(resp => 
+        <ResponsibilityListItem key={resp.id} item={resp} />
+    )
 
     return (
         <div className="preview-work-profile">
@@ -10,10 +14,9 @@ function WorkProfile({ item }) {
                 <p className="preview-program">{item.company}</p>
             </div>
             <ul>
-                <li>Awards</li>
-                <li>Organizations</li>
-                <li>Courses</li>
+                {responsibilities}
             </ul>
+            
         </div>
     )
     
@@ -21,7 +24,7 @@ function WorkProfile({ item }) {
 }
 
 WorkProfile.propTypes = {
-    item: PropTypes.func,
+    item: PropTypes.object,
 }
 
 export default WorkProfile
