@@ -11,10 +11,12 @@ function EducationInfoPreview({ educationInfoValues }) {
     
 
     return (
-        <div className="preview-education-info">
-            <h3 className="preview-section-header">EDUCATION BACKGROUND</h3>
-            <>{educationProfiles}</>
-        </div>
+        <section className="preview-education-info">
+            <h3 className="preview-section-header">EDUCATION</h3>
+            <div className="preview-education-profiles">
+                {educationProfiles}  
+            </div>
+        </section>
     )
 }
 

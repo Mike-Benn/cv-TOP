@@ -10,10 +10,18 @@ function WorkExperiencePreview({ workExperienceValues }) {
     )
 
     return (
-        <div className="preview-work-experience">
+        <section className="preview-work-experience">
+            <h3 className="preview-section-header">PAST WORK EXPERIENCE</h3>
+            <div className="preview-education-profiles">
+                {workProfiles}  
+            </div>
+        </section>
+
+
+        /*<div className="preview-work-experience">
             <h3 className="preview-section-header">WORK EXPERIENCE</h3>
             <>{workProfiles}</>
-        </div>
+        </div>*/
     )
 }
 

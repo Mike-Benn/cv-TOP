@@ -1,31 +1,23 @@
 import PropTypes from 'prop-types';
-import LanguageListItem from '../lists/LanguageListItem';
-import FrametoolListItem from '../lists/FrametoolListItem';
+import { createStringFromList } from '../../utils/utils';
 
 function TechnicalSkillsPreview({ technicalSkillsValues }) {
 
-    const languageListItems = technicalSkillsValues.currLanguageList.map(item => 
-        <LanguageListItem key={item.id} item={item} />        
-    )
+    
 
-    const frametoolListItems = technicalSkillsValues.currFrametoolList.map(item =>
-        <FrametoolListItem key={item.id} item={item} />
-    )
+    const languages = createStringFromList(technicalSkillsValues.currLanguageList);
+    const frameworks = createStringFromList(technicalSkillsValues.currFrameworkList);
+    const devtools = createStringFromList(technicalSkillsValues.currDevToolList);
+    const libraries = createStringFromList(technicalSkillsValues.currLibraryList);
 
     return (
         <div className="preview-technical-skills">
             <h3 className="preview-section-header">TECHNICAL SKILLS</h3>
-            <div className="preview-section-subheader">
-                <p className="preview-organization">Programming Languages</p>
-                <ul>
-                    {languageListItems}
-                </ul>
-            </div>
-            <div className="preview-section-subheader">
-                <p className="preview-organization">Frameworks and Tools</p>
-                <ul>
-                    {frametoolListItems}
-                </ul>
+            <div className="preview-skill-areas">
+                <p className="preview-text"><span className="preview-topic">Languages: </span>{languages}</p>
+                <p className="preview-text"><span className="preview-topic">Frameworks: </span>{frameworks}</p>
+                <p className="preview-text"><span className="preview-topic">Developer Tools: </span>{devtools}</p>
+                <p className="preview-text"><span className="preview-topic">Libraries </span>{libraries}</p>
             </div>
         </div>
     )
