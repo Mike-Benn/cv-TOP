@@ -5,13 +5,6 @@ import DeleteItemButton from '../buttons/DeleteItemButton'
 
 function JobProfileListItem({ data = {} , onDelete = null , onEdit = null }) {
     return (
-        /*<>
-            <li key={id}>
-                <p>{text}</p>
-                <DeleteItemButton id={id} onClose={onClose}/>
-            </li>
-            
-        </>*/
         <>
             <li className='generator-list-item' key={data.id}>
                 <p>{`${data.position} / ${data.company}`}</p>
