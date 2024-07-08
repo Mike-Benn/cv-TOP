@@ -1,13 +1,19 @@
-function PersonalInfoPreview() {
+import PropTypes from 'prop-types'
+
+function PersonalInfoPreview({ personalInfoValues }) {
     return (
     <div className="preview-personal-info">
         <div className="preview-profile">
-            <h2 className="preview-name">John Doe</h2>
-            <p className="preview-title">Business Manager</p>
+            <h2 className="preview-name">{`${personalInfoValues.currFirstName} ${personalInfoValues.currLastName}`}</h2>
+            <p className="preview-title">{personalInfoValues.currTitle}</p>
         </div>
-        <p className="preview-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit Accusantium corporis eligendi quos natus consectetur sint eum nobis dolore neque error reiciendis explicabo ex minima quae fugit.</p>
+        <p className="preview-summary">{personalInfoValues.currSummary}</p>
     </div>
     )
+}
+
+PersonalInfoPreview.propTypes = {
+    personalInfoValues: PropTypes.object,
 }
 
 export default PersonalInfoPreview

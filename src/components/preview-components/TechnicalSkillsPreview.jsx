@@ -1,25 +1,38 @@
-function TechnicalSkillsPreview() {
+import PropTypes from 'prop-types';
+import LanguageListItem from '../lists/LanguageListItem';
+import FrametoolListItem from '../lists/FrametoolListItem';
+
+function TechnicalSkillsPreview({ technicalSkillsValues }) {
+
+    const languageListItems = technicalSkillsValues.currLanguageList.map(item => 
+        <LanguageListItem key={item.id} item={item} />        
+    )
+
+    const frametoolListItems = technicalSkillsValues.currFrametoolList.map(item =>
+        <FrametoolListItem key={item.id} item={item} />
+    )
+
     return (
         <div className="preview-technical-skills">
             <h3 className="preview-section-header">TECHNICAL SKILLS</h3>
             <div className="preview-section-subheader">
-                <p className="preview-organization">Design</p>
+                <p className="preview-organization">Programming Languages</p>
                 <ul>
-                    <li>Photoshop</li>
-                    <li>Illustrator</li>
-                    <li>Figma</li>
+                    {languageListItems}
                 </ul>
             </div>
             <div className="preview-section-subheader">
-                <p className="preview-organization">Management</p>
+                <p className="preview-organization">Frameworks and Tools</p>
                 <ul>
-                    <li>Time-management</li>
-                    <li>Communication</li>
-                    <li>Pressure</li>
+                    {frametoolListItems}
                 </ul>
             </div>
         </div>
     )
+}
+
+TechnicalSkillsPreview.propTypes = {
+    technicalSkillsValues: PropTypes.object,
 }
 
 export default TechnicalSkillsPreview

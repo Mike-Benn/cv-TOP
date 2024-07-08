@@ -1,19 +1,26 @@
-function EducationInfoPreview() {
+import PropTypes from 'prop-types'
+import EducationProfile from './EducationProfile'
+
+
+
+function EducationInfoPreview({ educationInfoValues }) {
+
+    const educationProfiles = educationInfoValues.currEducationProfileList.map(item =>
+        <EducationProfile key={item.id} item={item} />
+    )
+    
+
     return (
         <div className="preview-education-info">
             <h3 className="preview-section-header">EDUCATION BACKGROUND</h3>
-            <div className="preview-section-subheader">
-                <p className="preview-organization">University of Chicago</p>
-                <p className="preview-program">BS in Computer Science</p>
-            </div>
-            <ul>
-                <li>Awards:</li>
-                <li>Organizations:</li>
-                <li>Courses:</li>
-            </ul>
-            
+            <>{educationProfiles}</>
         </div>
     )
+}
+
+EducationInfoPreview.propTypes = {
+    educationInfoValues: PropTypes.object,
+
 }
 
 export default EducationInfoPreview
