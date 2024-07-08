@@ -10,6 +10,7 @@ function UnorderedList({ itemList , className }) {
 
 UnorderedList.propTypes = {
     className: PropTypes.string,
+    itemList: PropTypes.arrayOf(PropTypes.node),
 }
 
 export default UnorderedList
