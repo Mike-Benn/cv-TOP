@@ -15,6 +15,7 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 main {
@@ -23,11 +24,13 @@ main {
     
 }
 
-
+body {
+    font-size: .9rem;
+}
 
 
 .generator {
-    display: flex;
+    display: hidden;
     flex-direction: column;
     gap: 3.5rem;
     padding: 2.0rem 5.0rem;
@@ -39,123 +42,103 @@ main {
     
 }
 
+/* Preview General */
+
 .preview {
     padding: 2rem 3.0rem 0rem;
     background-color: var(--preview-backgr-color);
     box-sizing: border-box;
     height: 100vh;
+    overflow: auto;
+    scrollbar-width: thin;
 }
 
 .preview-container {
     box-sizing: border-box;
-    height: 100%;
+    height: 1122px; /*100%*/
+    /*max-height: 1122px;*/
     background-color: white;
-    overflow: auto;
-    scrollbar-width: thin;
     box-shadow: 0px 0px 3px 3px rgb(198, 198, 198);
     padding: 1rem;
-    gap: 1.5rem;
+    
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: calc(100% - 2rem);
+    
 }
 
-
-/*Preview Header*/
-.preview-header {
-    display: grid;
-    grid-template-columns: 60% 40%;
-    gap: 1.25rem;
-    width: calc(100% - 1.25rem);
-    box-sizing: border-box;
-
-      
-
+.preview-topic , .preview-organization {
+    font-size: .95rem;
+    font-weight: bold;
 }
 
-.preview-personal-info {
+.preview-subtopic , .preview-program , .preview-technology {
+    font-size: .95rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Preview Header New */
+
+.preview-page-header {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    align-self: center;
+
 }
 
 .preview-contact-info {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
+    gap: .3rem;
 
-}
-
-.contact-info-item {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    
-}
-
-.preview-contact-icon {
-    width: 20px;
-    height: auto;
-}
-
-.preview-contact-text {
-    font-size: .85rem;
-    word-break: break-all;
-}
-
-
-/*Preview Body*/
-
-.preview-body {
-    display: grid;
-    grid-template-columns: 60% 40%;
-    gap: 1.5rem;
-    box-sizing: border-box;
-    width: calc(100% - 1.5rem);
-}
-
-.preview-body-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
 }
 
 .preview-section-header {
-    color: var(--preview-primary-element-color);
-    border-bottom: 2px solid var(--preview-primary-element-color);
-    font-size: 1rem;
-
+    border-bottom: 1.5px solid black;
+    font-size: .95rem;
 }
 
-.preview-section-subheader > ul > li {
-    font-size: 1rem;
-}
+/* Preview Education New */
 
-.preview-education-info , .preview-work-experience , .preview-technical-skills {
+.preview-education-info , .preview-technical-skills , .preview-work-experience , .preview-projects-info {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: .5rem;
 }
 
-.preview-technical-skills > .preview-section-subheader {
+.preview-education-info {
+    min-height: 105px;
+}
+
+.preview-education-profiles , .preview-project-profiles {
+    padding-left: 1.5rem;
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+/* Preview Work Experience New */
+
+/* Technical Skills New */
+
+.preview-skill-areas {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    padding-left: 1.5rem;
 }
 
-.preview-organization {
-    font-size: 1.25rem;
-    font-weight: bold;
+.preview-work-profile > ul > li , .preview-project-profile > ul > li{
+    padding-left: 1.5rem;
 }
 
-.preview-section-subheader > ul > li , .preview-education-info > ul > li , .preview-work-experience > ul > li {
-    color: var(--preview-list-item-color);
-    font-size: .9rem;
-    
+.preview-work-profile {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
 }
 
-/*End Preview*/
 ul {
     list-style-position: inside;
 }
@@ -208,7 +191,7 @@ textarea {
     height: 200px;
 }
 
-header {
+.generator-page-header {
     display: flex;
     flex-direction: column;
     gap: 1.0rem;
@@ -254,16 +237,25 @@ button:hover {
     background-color: var(--submit-btn-backgr-color);
 }
 
-
+.preview-fullname {
+    font-size: 1.75rem;
+}
 
 .generator-list-item {
     list-style-type: none;
     border: 2px solid var(--list-item-color);
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 1rem 0.5rem;
+    height: 55px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 1rem;
+    
+}
+
+.generator-list-item > p {
+    overflow: hidden;
 }
 
 .list-btn-container {
@@ -281,7 +273,7 @@ button:hover {
     
 }
 
-.job-experience-list .education-experience-list , .language-experience-list , .frametool-experience-list , .job-profile-list {
+.job-experience-list .education-experience-list , .language-experience-list , .frametool-experience-list , .unordered-profile-list {
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -289,8 +281,31 @@ button:hover {
 }
 
 img {
-    width: 20px;
+    width: 12px;
     height: auto;
     
 }
 
+.preview-summary {
+    word-break: break-all;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important; 
+    -webkit-text-fill-color: black !important; 
+    
+}
+
+/* For non-webkit browsers */
+input:-moz-autofill,
+input:-moz-autofill:focus,
+input:-moz-autofill:hover,
+input:-moz-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important; 
+    color: black !important; 
+    
+}
