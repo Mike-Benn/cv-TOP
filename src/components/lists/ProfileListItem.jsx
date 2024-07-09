@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 
-function ResponsibilityListItem({ item }) {
+function ProfileListItem({ item }) {
     
     return (
         <>
@@ -12,8 +12,8 @@ function ResponsibilityListItem({ item }) {
 
 }
 
-ResponsibilityListItem.propTypes = {
+ProfileListItem.propTypes = {
     item: PropTypes.object,
 }
 
-export default ResponsibilityListItem
+export default ProfileListItem
