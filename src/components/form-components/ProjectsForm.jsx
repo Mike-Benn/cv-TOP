@@ -24,10 +24,10 @@ function ProjectsForm({ projectsData }) {
     return (
         <div className="form-section">
             <h2 className="form-header">Projects</h2>
-            <UnorderedList itemList={projectListItems} className="project-profile-list"/>
+            <UnorderedList itemList={projectListItems} className="unordered-profile-list"/>
             <SmallTextField fieldName='Project Name' onInputChange={projectsData.projectsListeners.handleCurrProjectNameChange} value={projectsData.projectsValues.currProjectName}/>
-            <BulletListField fieldName='Languages/Tech Used' onInputChange={projectsData.projectsListeners.handleCurrTechnologyChange} onAddChange={projectsData.projectsListeners.handleAddCurrTechnology} itemList={technologyListItems} value={projectsData.projectsValues.currTechnology} />
-            <BulletListField fieldName='Project Accomplishments/Objectives' onInputChange={projectsData.projectsListeners.handleCurrProjectObjectiveChange} onAddChange={projectsData.projectsListeners.handleAddCurrProjectObjective} itemList={objectiveListItems} value={projectsData.projectsValues.currProjectObjective} />
+            <BulletListField fieldName='Languages/Tech Used' onInputChange={projectsData.projectsListeners.handleCurrTechnologyChange} onAddChange={projectsData.projectsListeners.handleAddCurrTechnology} itemList={technologyListItems} value={projectsData.projectsValues.currTechnology} classIdentifier={"unordered-profile-list"}/>
+            <BulletListField fieldName='Project Accomplishments/Objectives' onInputChange={projectsData.projectsListeners.handleCurrProjectObjectiveChange} onAddChange={projectsData.projectsListeners.handleAddCurrProjectObjective} itemList={objectiveListItems} value={projectsData.projectsValues.currProjectObjective} classIdentifier={"unordered-profile-list"}/>
             <SubmitButton buttonText='Submit Project' onClickAction={projectsData.projectsListeners.handleSubmitProject} />
         </div>
     )

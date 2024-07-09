@@ -24,12 +24,12 @@ function WorkExperienceForm({ workExperienceData }) {
     return (
         <div className='form-section'>
             <h2 className='form-header'>Work Experience</h2>
-            <UnorderedList itemList={jobProfileListItems} className="job-profile-list"/>
+            <UnorderedList itemList={jobProfileListItems} className="unordered-profile-list"/>
             <SmallTextField fieldName='Title/Position' onInputChange={workExperienceData.workExperienceListeners.handlePositionChange} value={workExperienceData.workExperienceValues.currPosition}/>
             <SmallTextField fieldName='Workplace/Company' onInputChange={workExperienceData.workExperienceListeners.handleCompanyChange} value={workExperienceData.workExperienceValues.currCompany}/>
             <SmallMonthField fieldName='Starting Date' onInputChange={workExperienceData.workExperienceListeners.handleStartingDateChange} value={workExperienceData.workExperienceValues.currStartingDate}/>
             <CheckboxField fieldName='Still Employed' onInputChange={workExperienceData.workExperienceListeners.handleStillEmployed} checked={workExperienceData.workExperienceValues.currEmployed}/>
-            <BulletListField fieldName='Job Responsibilities' value={workExperienceData.workExperienceValues.currResponsibility} onInputChange={workExperienceData.workExperienceListeners.handleCurrResponsibility} onAddChange={workExperienceData.workExperienceListeners.handleAddCurrResponsibility} itemList={jobResponsibilityListItems}/>
+            <BulletListField fieldName='Job Responsibilities' value={workExperienceData.workExperienceValues.currResponsibility} onInputChange={workExperienceData.workExperienceListeners.handleCurrResponsibility} onAddChange={workExperienceData.workExperienceListeners.handleAddCurrResponsibility} itemList={jobResponsibilityListItems} classIdentifier={"unordered-profile-list"}/>
             <SubmitButton buttonText='Submit Job Profile' onClickAction={workExperienceData.workExperienceListeners.handleSubmitJobProfile} />
         </div>
 
