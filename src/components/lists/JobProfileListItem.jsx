@@ -7,7 +7,7 @@ function JobProfileListItem({ data = {} , onDelete = null , onEdit = null }) {
     return (
         <>
             <li className='generator-list-item' key={data.id}>
-                <p>{`${data.position} / ${data.company}`}</p>
+                <p>{data.position}</p>
                 <div className="list-btn-container">
                     <EditItemButton id={data.id} onEdit={onEdit} />
                     <DeleteItemButton id={data.id} onDelete={onDelete} />
