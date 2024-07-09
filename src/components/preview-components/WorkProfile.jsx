@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import ResponsibilityListItem from '../lists/ResponsibilityListItem';
+import ProfileListItem from '../lists/ProfileListItem';
 
 function WorkProfile({ item }) {
     
     const responsibilities = item.responsibilities.map(resp => 
-        <ResponsibilityListItem key={resp.id} item={resp} />
+        <ProfileListItem key={resp.id} item={resp} />
     )
 
     return (
