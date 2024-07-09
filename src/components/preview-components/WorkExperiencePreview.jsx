@@ -16,12 +16,6 @@ function WorkExperiencePreview({ workExperienceValues }) {
                 {workProfiles}  
             </div>
         </section>
-
-
-        /*<div className="preview-work-experience">
-            <h3 className="preview-section-header">WORK EXPERIENCE</h3>
-            <>{workProfiles}</>
-        </div>*/
     )
 }
 
