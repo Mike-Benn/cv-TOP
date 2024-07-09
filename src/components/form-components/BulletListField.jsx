@@ -2,10 +2,16 @@ import PropTypes from 'prop-types';
 import UnorderedList from '../lists/UnorderedList';
 
 
-function BulletListField({ fieldName = "Placeholder" , onInputChange , onAddChange , value , itemList , classIdentifier  }) {
+function BulletListField({ fieldName = "Placeholder" , onInputChange , onAddChange , value , itemList , classIdentifier }) {
     
     let forVal = fieldName.split(' ').join('');
     
+    const enterPressed = (e) => {
+        if (e.key === 'Enter') {
+            onAddChange();
+        }
+    }
+
     return (
         
         <div className="bullet-field">
@@ -19,6 +25,7 @@ function BulletListField({ fieldName = "Placeholder" , onInputChange , onAddChan
                     className='text-input'
                     onChange={onInputChange}
                     value={value}
+                    onKeyDown={enterPressed}
                     />
                 <button type="button" className="submit-btn" onClick={onAddChange}>Add</button>
             </div>
@@ -34,7 +41,8 @@ BulletListField.propTypes = {
     value: PropTypes.string,
     onInputChange: PropTypes.func,
     onAddChange: PropTypes.func,
-    itemList: PropTypes.array,/* This doesn't feel like it should be an array */
+    itemList: PropTypes.arrayOf(PropTypes.node),
+    
     
     
     
