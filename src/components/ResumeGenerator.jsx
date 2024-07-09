@@ -146,7 +146,7 @@ function ResumeGenerator() {
     
     const handleEditEducationProfile = (id) => {
         let profileObject = getItemWithID(id , currEducationProfileList);
-        let profile = profileObject.profile;
+        let profile = profileObject.item;
         let educationProfileList = profileObject.arr;
 
         setCurrOrganization(profile.organization);
