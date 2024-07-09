@@ -12,7 +12,6 @@ function SmallPhoneNumberField({ fieldName = "Placeholder" , onInputChange }) {
                 name={forVal}
                 id={forVal} 
                 className='text-input'
-                placeholder='###-###-####'
                 onChange={onInputChange}
             />
         </div>
