@@ -2,7 +2,7 @@
 import PreviewForm from "./PreviewForm";
 import GeneratorForm from "./GeneratorForm"
 import { getItemWithID } from "../utils/utils";
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from "../../node_modules/uuid"
 import { useState } from "react";
 
 
