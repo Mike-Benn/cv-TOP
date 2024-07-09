@@ -3,9 +3,6 @@ import PreviewForm from "./PreviewForm";
 import GeneratorForm from "./GeneratorForm"
 import { getItemWithID } from "../utils/utils";
 import { v4 as uuidv4 } from "uuid"
-import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
-
 import { useState } from "react";
 
 
