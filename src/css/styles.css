@@ -55,8 +55,10 @@ body {
 
 .preview-container {
     box-sizing: border-box;
-    height: 1122px; /*100%*/
+    /*height: 1122px; /*100%*/
     /*max-height: 1122px;*/
+    height: 8.5in;
+    width: 11in;
     background-color: white;
     box-shadow: 0px 0px 3px 3px rgb(198, 198, 198);
     padding: 1rem;
