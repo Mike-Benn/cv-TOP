@@ -1,3 +1,5 @@
+/*   Variables   */
+
 :root {
     --generator-font-color: #36454F;
     --generator-backgr-color: #FBFBFB;
@@ -8,8 +10,11 @@
     --preview-primary-element-color: #00457E;
     --preview-backgr-color: #eaeaea;
     --preview-list-item-color: #4d4d4d;
+    --overlay-button-backgr-color: #9a00d7;
 
 }
+
+/*   General Tags   */
 
 * {
     margin: 0;
@@ -26,8 +31,34 @@ main {
 
 body {
     font-size: .9rem;
+
 }
 
+ul {
+    list-style-position: inside;
+    
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: var(--generator-font-color);
+
+}
+
+textarea {
+    height: 200px;
+
+}
+
+button:hover {
+    cursor: pointer;
+
+}
+
+/*****************/
+/*   Generator   */
+/*****************/
 
 .generator {
     display: flex;
@@ -42,8 +73,6 @@ body {
     
 }
 
-/* Preview General */
-
 .preview {
     padding: 2rem 3.0rem 0rem;
     background-color: var(--preview-backgr-color);
@@ -51,37 +80,24 @@ body {
     height: 100vh;
     overflow: auto;
     scrollbar-width: thin;
+    display: flex;
+    justify-content: center;
 }
 
 .preview-container {
     box-sizing: border-box;
-    /*height: 1122px; /*100%*/
-    /*max-height: 1122px;*/
     height: 11in;
     width: 8.5in;
     background-color: white;
     box-shadow: 0px 0px 3px 3px rgb(198, 198, 198);
     padding: 1rem;
-    
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
-    
+        
 }
 
-.preview-topic , .preview-organization {
-    font-size: .95rem;
-    font-weight: bold;
-}
-
-.preview-subtopic , .preview-program , .preview-technology {
-    font-size: .95rem;
-    font-style: italic;
-    font-weight: 400;
-}
-
-/* Preview Header New */
+/*   Small containers   */
 
 .preview-page-header {
     display: flex;
@@ -97,21 +113,11 @@ body {
 
 }
 
-.preview-section-header {
-    border-bottom: 1.5px solid black;
-    font-size: .95rem;
-}
-
-/* Preview Education New */
-
 .preview-education-info , .preview-technical-skills , .preview-work-experience , .preview-projects-info {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-}
 
-.preview-education-info {
-    min-height: 105px;
 }
 
 .preview-education-profiles , .preview-project-profiles {
@@ -119,30 +125,26 @@ body {
     display: flex;
     gap: .5rem;
     flex-direction: column;
+
 }
-
-/* Preview Work Experience New */
-
-/* Technical Skills New */
 
 .preview-skill-areas {
     display: flex;
     flex-direction: column;
     padding-left: 1.5rem;
+
 }
 
 .preview-work-profile > ul > li , .preview-project-profile > ul > li{
     padding-left: 1.5rem;
+
 }
 
 .preview-work-profile {
     display: flex;
     flex-direction: column;
     gap: .25rem;
-}
 
-ul {
-    list-style-position: inside;
 }
 
 .form-section {
@@ -150,21 +152,12 @@ ul {
     flex-direction: column;
     gap: 1.5rem;
     
-    
 }
-
-.preview-name , .preview-title {
-    color: var(--preview-primary-element-color);    
-}
-
-/*will-change*/
-
 
 .field {
     position: relative;
     display: flex;
     gap: 1rem;
-    
      
 }
 
@@ -173,10 +166,12 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
 }
 
 .checkbox-field {
     gap: 1rem;
+    
 }
 
 .text-input {
@@ -185,12 +180,7 @@ ul {
     border: 2px solid var(--generator-border-color);
     border-radius: 5px;
     background-color: var(--generator-backgr-color);
-}
-
-
-
-textarea {
-    height: 200px;
+    
 }
 
 .generator-page-header {
@@ -200,11 +190,35 @@ textarea {
     
 }
 
-a {
-    text-decoration: underline;
-    cursor: pointer;
-    color: var(--generator-font-color);
+/*   Text/Font/Appearance manipulation   */
+
+.preview-topic , .preview-organization {
+    font-size: .95rem;
+    font-weight: bold;
+
 }
+
+.preview-subtopic , .preview-program , .preview-technology {
+    font-size: .95rem;
+    font-style: italic;
+    font-weight: 400;
+
+}
+
+.preview-section-header {
+    border-bottom: 1.5px solid black;
+    font-size: .95rem;
+
+}
+
+.preview-name , .preview-title {
+    color: var(--preview-primary-element-color);   
+
+}
+
+
+
+
 
 .field-label {
     position: absolute;
@@ -222,9 +236,7 @@ a {
     margin-bottom: 1rem;
 }
 
-button:hover {
-    cursor: pointer;
-}
+
 
 .submit-btn {
     padding: 0.5rem 1rem;
@@ -282,7 +294,7 @@ button:hover {
     
 }
 
-img {
+.list-button-image {
     width: 12px;
     height: auto;
     
@@ -311,3 +323,42 @@ input:-moz-autofill:active {
     color: black !important; 
     
 }
+
+.button-overlay {
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    height: 75px;
+    width: 175px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.toggle-display-button {
+    border-radius: 45px 0px 0px 45px;
+    border-right: none;
+    
+}
+
+.print-button {
+    border-radius: 0px 45px 45px 0px;
+    border-left: none;
+
+}
+
+.toggle-display-button , .print-button {
+    background-color: var(--overlay-button-backgr-color);
+
+}
+
+.overlay-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.toggle-display-button:hover , .print-button:hover {
+    opacity: 0.8;
+}
+
+
