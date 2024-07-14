@@ -6,11 +6,18 @@ import TechnicalSkillsForm from './form-components/TechnicalSkillsForm';
 import ProjectsForm from './form-components/ProjectsForm';
 import PropTypes from 'prop-types';
 
-function GeneratorForm({ personalInfoData , contactInfoData , educationInfoData , workExperienceData , technicalSkillsData , projectsData }) {
+function GeneratorForm({ personalInfoData , contactInfoData , educationInfoData , workExperienceData , technicalSkillsData , projectsData , isPreviewVisible }) {
+
+  let sectionClass = null;
+  if (isPreviewVisible) {
+    sectionClass = "generator";
+  } else {
+    sectionClass = "generator full-screen";
+  }
 
   return (
 
-    <section className="generator">
+    <section className={sectionClass}>
       <Header />
       <PersonalInfoForm personalInfoData={personalInfoData} contactInfoData={contactInfoData}/>
       <EducationInfoForm educationInfoData={educationInfoData}/>
@@ -30,6 +37,7 @@ GeneratorForm.propTypes = {
   workExperienceData: PropTypes.object,
   technicalSkillsData: PropTypes.object,
   projectsData: PropTypes.object,
+  isPreviewVisible: PropTypes.bool,
 }
 
 export default GeneratorForm
