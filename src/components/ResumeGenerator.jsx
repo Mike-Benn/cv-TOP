@@ -4,6 +4,10 @@ import GeneratorForm from "./GeneratorForm"
 import { getItemWithID } from "../utils/utils";
 import { v4 as uuidv4 } from "../../node_modules/uuid"
 import { useState } from "react";
+import eye from '../images/eye.png';
+import printer from '../images/printer.png';
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 
 
 function ResumeGenerator() {
@@ -189,6 +193,7 @@ function ResumeGenerator() {
     const [currPosition , setCurrPosition] = useState("");
     const [currCompany , setCurrCompany] = useState("");
     const [currStartingDate , setCurrStartingDate] = useState("");
+    const [currEndingDate , setCurrEndingDate] = useState("");
     const [currEmployed , setCurrEmployed] = useState(false);
     const [currResponsibility , setCurrResponsibility] = useState("");
     const [currJobResponsibilitiesList , setCurrJobResponsibilitiesList] = useState([]);
@@ -207,6 +212,10 @@ function ResumeGenerator() {
     const handleStartingDateChange = (e) => {
         setCurrStartingDate(e.target.value);
         
+    }
+
+    const handleEndingDateChange = (e) => {
+        setCurrEndingDate(e.target.value);
     }
 
     const handleStillEmployed = () => {
@@ -262,6 +271,7 @@ function ResumeGenerator() {
         setCurrPosition(profile.position);
         setCurrCompany(profile.company);
         setCurrStartingDate(profile.startingDate);
+        setCurrEndingDate(profile.endingDate);
         setCurrEmployed(profile.stillEmployed);
         setCurrJobResponsibilitiesList(profile.responsibilities);
         setCurrResponsibility("");
@@ -282,6 +292,7 @@ function ResumeGenerator() {
                 position: currPosition,
                 company: currCompany,
                 startingDate: currStartingDate,
+                endingDate: currEndingDate,
                 stillEmployed: currEmployed,
                 responsibilities: currJobResponsibilitiesList,  
             }
@@ -297,6 +308,7 @@ function ResumeGenerator() {
         setCurrPosition("");
         setCurrCompany("");
         setCurrStartingDate("");
+        setCurrEndingDate("");
         setCurrEmployed(false);
         setCurrJobResponsibilitiesList([]);
         setCurrResponsibility("");
@@ -307,6 +319,7 @@ function ResumeGenerator() {
         currPosition,
         currCompany,
         currStartingDate,
+        currEndingDate,
         currEmployed,
         currResponsibility,
         currJobResponsibilitiesList,
@@ -317,6 +330,7 @@ function ResumeGenerator() {
         handlePositionChange,
         handleCompanyChange,
         handleStartingDateChange,
+        handleEndingDateChange,
         handleStillEmployed,
         handleCurrResponsibility,
         handleAddCurrResponsibility,
@@ -659,10 +673,33 @@ function ResumeGenerator() {
 
     // End of state management // 
 
+
+
+    // Button Overlay Handlers //
+
+    const [isPreviewVisible , setIsPreviewVisible] = useState(true);
+    const handleToggleVisibility = () => {
+        if (isPreviewVisible) {
+            setIsPreviewVisible(false);
+        } else {
+            setIsPreviewVisible(true);
+        }
+        console.log(!isPreviewVisible);
+    }
+
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
     return (
         <main>
-            <GeneratorForm personalInfoData={personalInfoData} contactInfoData={contactInfoData} educationInfoData={educationInfoData} workExperienceData={workExperienceData} technicalSkillsData={technicalSkillsData} projectsData={projectsData}/>
-            <PreviewForm personalInfoValues={personalInfoValues} contactInfoValues={contactInfoValues} educationInfoValues={educationInfoValues} workExperienceValues={workExperienceValues} technicalSkillsValues={technicalSkillsValues} projectsValues={projectsValues}/>
+            <div className="button-overlay">
+                <button type="button" onClick={handleToggleVisibility} className="toggle-display-button"><img src={eye} alt="Open eye ball icon" className="overlay-icon" /></button>
+                <button type="button" onClick={handlePrint} className="print-button"><img src={printer} alt="Printer icon" className="overlay-icon" /></button>
+            </div>
+            <GeneratorForm isPreviewVisible={isPreviewVisible} personalInfoData={personalInfoData} contactInfoData={contactInfoData} educationInfoData={educationInfoData} workExperienceData={workExperienceData} technicalSkillsData={technicalSkillsData} projectsData={projectsData}/>
+            <PreviewForm isPreviewVisible={isPreviewVisible} componentRef={componentRef} personalInfoValues={personalInfoValues} contactInfoValues={contactInfoValues} educationInfoValues={educationInfoValues} workExperienceValues={workExperienceValues} technicalSkillsValues={technicalSkillsValues} projectsValues={projectsValues}/>
         </main>
     )
 }
