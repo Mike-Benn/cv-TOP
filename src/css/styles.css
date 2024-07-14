@@ -358,6 +358,7 @@ input:-moz-autofill:active {
 
 .toggle-display-button , .print-button {
     background-color: var(--overlay-button-backgr-color);
+    border: none;
 
 }
 
@@ -367,7 +368,7 @@ input:-moz-autofill:active {
 }
 
 .toggle-display-button:hover , .print-button:hover {
-    opacity: 0.8;
+    background-color: #c32cff;
 }
 
 
