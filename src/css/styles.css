@@ -24,7 +24,8 @@
 }
 
 main {
-    display: grid;
+    display: flex;
+    justify-content: center;
     grid-template-columns: minmax(490px , 33%) 1fr;
     
 }
@@ -83,12 +84,18 @@ input:-moz-autofill:active {
     flex-direction: column;
     gap: 3.5rem;
     padding: 2.0rem 5.0rem;
-    background-color: var(--generator-backgr-color);
-    overflow: scroll;
+    background-color: white;
+    overflow-y: scroll;
     height: 100vh;
     scrollbar-width: thin;
     box-sizing: border-box;
+    min-width: 490px;
+    max-width: 33%;
     
+}
+
+.generator.full-screen {
+    max-width: 50%;
 }
 
 .generator-page-header {
@@ -183,6 +190,7 @@ input:-moz-autofill:active {
     scrollbar-width: thin;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .preview-container {
@@ -229,6 +237,12 @@ input:-moz-autofill:active {
 
 }
 
+.preview-school-info {
+    display: flex;
+    justify-content: space-between;
+
+}
+
 .preview-skill-areas {
     display: flex;
     flex-direction: column;
@@ -254,7 +268,7 @@ input:-moz-autofill:active {
 
 }
 
-.preview-subtopic , .preview-program , .preview-technology {
+.preview-subtopic , .preview-program , .preview-technology , .preview-status{
     font-size: .95rem;
     font-style: italic;
     font-weight: 400;
