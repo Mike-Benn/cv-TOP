@@ -21,6 +21,14 @@ function WorkExperienceForm({ workExperienceData }) {
         <GeneralListItem key={item.id} data={item} onDelete={workExperienceData.workExperienceListeners.handleDeleteResponsibility} onEdit={workExperienceData.workExperienceListeners.handleEditResponsibility}/>
     )
     
+    let endingDate;
+    if (workExperienceData.workExperienceValues.currEmployed) {
+        endingDate = null;
+    } else {
+        endingDate = <SmallMonthField fieldName='Ending Date' onInputChange={workExperienceData.workExperienceListeners.handleEndingDateChange} value={workExperienceData.workExperienceValues.currEndingDate} />
+    }
+
+
     return (
         <form className='form-section'>
             <h2 className='form-header'>Work Experience</h2>
@@ -29,6 +37,7 @@ function WorkExperienceForm({ workExperienceData }) {
             <SmallTextField fieldName='Workplace/Company' onInputChange={workExperienceData.workExperienceListeners.handleCompanyChange} value={workExperienceData.workExperienceValues.currCompany}/>
             <SmallMonthField fieldName='Starting Date' onInputChange={workExperienceData.workExperienceListeners.handleStartingDateChange} value={workExperienceData.workExperienceValues.currStartingDate}/>
             <CheckboxField fieldName='Still Employed' onInputChange={workExperienceData.workExperienceListeners.handleStillEmployed} checked={workExperienceData.workExperienceValues.currEmployed}/>
+            {endingDate}
             <BulletListField fieldName='Job Responsibilities' value={workExperienceData.workExperienceValues.currResponsibility} onInputChange={workExperienceData.workExperienceListeners.handleCurrResponsibility} onAddChange={workExperienceData.workExperienceListeners.handleAddCurrResponsibility} itemList={jobResponsibilityListItems} classIdentifier={"unordered-profile-list"}/>
             <SubmitButton buttonText='Submit Job Profile' onClickAction={workExperienceData.workExperienceListeners.handleSubmitJobProfile} />
         </form>
