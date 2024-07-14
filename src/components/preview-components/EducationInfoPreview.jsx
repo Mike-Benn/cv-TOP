@@ -4,7 +4,6 @@ import EducationProfile from './EducationProfile'
 
 
 function EducationInfoPreview({ educationInfoValues }) {
-
     const educationProfiles = educationInfoValues.currEducationProfileList.map(item =>
         <EducationProfile key={item.id} item={item} />
     )
