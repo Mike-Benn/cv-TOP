@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types'
 
 function UnorderedList({ itemList , className }) {
-    return (
-        <>
-            <ul className={className}>{itemList}</ul>       
-        </>
-    )
+
+    if (itemList.length) {
+        return (
+            <>
+                <ul className={className}>{itemList}</ul>
+            </>
+        )
+    } else {
+        return null;
+    }
+
 }
 
 UnorderedList.propTypes = {
