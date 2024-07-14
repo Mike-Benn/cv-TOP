@@ -17,7 +17,6 @@ function createStringFromList(arr) {
     for (let i = 0; i < length; i++) {
         if (i === length - 1) {
             result = result + arr[i].value;
-            console.log(result)
             return result;
         }
         result = result + arr[i].value + ", ";

@@ -5,7 +5,7 @@ import GeneralListItem from '../lists/GeneralListItem';
 
 function TechnicalSkillsForm({ technicalSkillsData }) {
     
-    console.log(technicalSkillsData.technicalSkillsValues.currLanguageList)
+    
     const languageListItems = technicalSkillsData.technicalSkillsValues.currLanguageList.map(item =>
         <GeneralListItem key={item.id} data={item} onDelete={technicalSkillsData.technicalSkillsListeners.handleDeleteLanguage} onEdit={technicalSkillsData.technicalSkillsListeners.handleEditLanguage} />
     )

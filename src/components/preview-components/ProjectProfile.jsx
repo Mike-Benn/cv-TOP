@@ -4,7 +4,7 @@ import { createStringFromList } from '../../utils/utils';
 
 function ProjectProfile({ item }) {
 
-    console.log(item)
+    
 
     let projectName = item.name + " | ";
     let technologyString = createStringFromList(item.technologies);
