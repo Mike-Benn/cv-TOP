@@ -15,14 +15,14 @@ function EducationInfoForm({ educationInfoData }) {
 
 
     return (
-        <div className='form-section'>
+        <form className='form-section'>
             <h2 className='form-header'>Education</h2>
             <UnorderedList itemList={educationProfileListItems} className="unordered-profile-list" />
             <SmallTextField fieldName='University/Organization' placeHolder='University of Illinois' onInputChange={educationInfoData.educationInfoListeners.handleOrganizationChange} value={educationInfoData.educationInfoValues.currOrganization}/>
             <SmallTextField fieldName='Program/Degree' placeHolder='BS in Computer Science' onInputChange={educationInfoData.educationInfoListeners.handleProgramChange} value={educationInfoData.educationInfoValues.currProgram}/>
             <CheckboxField fieldName='Still Enrolled' onInputChange={educationInfoData.educationInfoListeners.handleStillEnrolled} checked={educationInfoData.educationInfoValues.currEnrolled} value={educationInfoData.educationInfoValues.currEnrolled}/>
             <SubmitButton buttonText='Submit Education Background' onClickAction={educationInfoData.educationInfoListeners.handleSubmitEducationProfile}/>
-        </div>
+        </form>
     )
 }
 

@@ -23,14 +23,14 @@ function TechnicalSkillsForm({ technicalSkillsData }) {
     )
 
     return (
-        <div className='form-section'>
+        <form className='form-section'>
             <h2 className='form-header'>Technical Skills</h2>
             <BulletListField fieldName='Programming Languages' onInputChange={technicalSkillsData.technicalSkillsListeners.handleLanguageChange} onAddChange={technicalSkillsData.technicalSkillsListeners.handleAddCurrLanguage} value={technicalSkillsData.technicalSkillsValues.currLanguage} classIdentifier={"unordered-profile-list"} itemList={languageListItems}/>
             <BulletListField fieldName='Frameworks' onInputChange={technicalSkillsData.technicalSkillsListeners.handleFrameworkChange} onAddChange={technicalSkillsData.technicalSkillsListeners.handleAddCurrFramework} value={technicalSkillsData.technicalSkillsValues.currFramework} classIdentifier={"unordered-profile-list"} itemList={frameworkListItems}/>
             <BulletListField fieldName='Developer Tools' onInputChange={technicalSkillsData.technicalSkillsListeners.handleDevToolChange} onAddChange={technicalSkillsData.technicalSkillsListeners.handleAddCurrDevTool} value={technicalSkillsData.technicalSkillsValues.currDevTool} classIdentifier={"unordered-profile-list"} itemList={devToolListItems}/>
             <BulletListField fieldName='Libraries' onInputChange={technicalSkillsData.technicalSkillsListeners.handleLibraryChange} onAddChange={technicalSkillsData.technicalSkillsListeners.handleAddCurrLibrary} value={technicalSkillsData.technicalSkillsValues.currLibrary} classIdentifier={"unordered-profile-list"} itemList={libraryListItems}/>
         
-        </div>
+        </form>
     )
 }
 

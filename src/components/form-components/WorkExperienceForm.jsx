@@ -22,7 +22,7 @@ function WorkExperienceForm({ workExperienceData }) {
     )
     
     return (
-        <div className='form-section'>
+        <form className='form-section'>
             <h2 className='form-header'>Work Experience</h2>
             <UnorderedList itemList={jobProfileListItems} className="unordered-profile-list"/>
             <SmallTextField fieldName='Title/Position' onInputChange={workExperienceData.workExperienceListeners.handlePositionChange} value={workExperienceData.workExperienceValues.currPosition}/>
@@ -31,7 +31,7 @@ function WorkExperienceForm({ workExperienceData }) {
             <CheckboxField fieldName='Still Employed' onInputChange={workExperienceData.workExperienceListeners.handleStillEmployed} checked={workExperienceData.workExperienceValues.currEmployed}/>
             <BulletListField fieldName='Job Responsibilities' value={workExperienceData.workExperienceValues.currResponsibility} onInputChange={workExperienceData.workExperienceListeners.handleCurrResponsibility} onAddChange={workExperienceData.workExperienceListeners.handleAddCurrResponsibility} itemList={jobResponsibilityListItems} classIdentifier={"unordered-profile-list"}/>
             <SubmitButton buttonText='Submit Job Profile' onClickAction={workExperienceData.workExperienceListeners.handleSubmitJobProfile} />
-        </div>
+        </form>
 
     )
 }
