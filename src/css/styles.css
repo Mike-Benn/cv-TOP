@@ -56,6 +56,24 @@ button:hover {
 
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important; 
+    -webkit-text-fill-color: black !important; 
+    
+}
+
+input:-moz-autofill,
+input:-moz-autofill:focus,
+input:-moz-autofill:hover,
+input:-moz-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important; 
+    color: black !important; 
+    
+}
+
 /*****************/
 /*   Generator   */
 /*****************/
@@ -72,6 +90,89 @@ button:hover {
     box-sizing: border-box;
     
 }
+
+.generator-page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+/*   Generator Forms   */
+
+.form-header {
+    border-bottom: 2px solid black;
+
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+
+.field {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+
+}
+
+.field-label {
+    position: absolute;
+    transform: translate(1rem , -50%);
+    background-color: var(--generator-backgr-color);
+    padding: 2px 5px;
+    
+}
+
+.text-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 2px solid var(--generator-border-color);
+    border-radius: 5px;
+    background-color: var(--generator-backgr-color);
+    
+}
+
+/*   Generator Lists   */
+
+.bullet-field {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+}
+
+.unordered-profile-list {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+}
+
+.generator-list-item {
+    list-style-type: none;
+    border: 2px solid var(--list-item-color);
+    border-radius: 5px;
+    display: flex;
+    padding: 1rem 0.5rem;
+    height: 55px;
+    justify-content: space-between;
+    gap: 1rem;
+    box-sizing: border-box;
+
+}
+
+.generator-list-item > p {
+    overflow: hidden;
+
+}
+
+/*****************/
+/*    Preview    */
+/*****************/
 
 .preview {
     padding: 2rem 3.0rem 0rem;
@@ -96,8 +197,6 @@ button:hover {
     justify-content: space-around;
         
 }
-
-/*   Small containers   */
 
 .preview-page-header {
     display: flex;
@@ -147,51 +246,6 @@ button:hover {
 
 }
 
-.form-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    
-}
-
-.field {
-    position: relative;
-    display: flex;
-    gap: 1rem;
-     
-}
-
-.bullet-field {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-}
-
-.checkbox-field {
-    gap: 1rem;
-    
-}
-
-.text-input {
-    flex-grow: 1;
-    padding: 12px;
-    border: 2px solid var(--generator-border-color);
-    border-radius: 5px;
-    background-color: var(--generator-backgr-color);
-    
-}
-
-.generator-page-header {
-    display: flex;
-    flex-direction: column;
-    gap: 1.0rem;
-    
-}
-
-/*   Text/Font/Appearance manipulation   */
-
 .preview-topic , .preview-organization {
     font-size: .95rem;
     font-weight: bold;
@@ -216,27 +270,18 @@ button:hover {
 
 }
 
-
-
-
-
-.field-label {
-    position: absolute;
-    transform: translate(1rem , -50%);
-    background-color: var(--generator-backgr-color);
-    padding: 2px 5px;
-    
-    
-    
+.preview-fullname {
+    font-size: 1.75rem;
 
 }
 
-.form-header {
-    border-bottom: 2px solid black;
-    margin-bottom: 1rem;
+.preview-summary {
+    word-break: break-all;
 }
 
-
+/*****************/
+/*   Buttons     */
+/*****************/
 
 .submit-btn {
     padding: 0.5rem 1rem;
@@ -251,34 +296,13 @@ button:hover {
     background-color: var(--submit-btn-backgr-color);
 }
 
-.preview-fullname {
-    font-size: 1.75rem;
-}
-
-.generator-list-item {
-    list-style-type: none;
-    border: 2px solid var(--list-item-color);
-    border-radius: 5px;
-    display: flex;
-    padding: 1rem 0.5rem;
-    height: 55px;
-    box-sizing: border-box;
-    justify-content: space-between;
-    gap: 1rem;
-    
-}
-
-.generator-list-item > p {
-    overflow: hidden;
-}
-
 .list-btn-container {
     display: flex;
     gap: 0.5rem;
+
 }
 
 .list-item-delete-btn , .list-item-edit-btn {
-    
     box-sizing: border-box;
     padding: 2px;
     display: flex;
@@ -287,40 +311,9 @@ button:hover {
     
 }
 
-.job-experience-list .education-experience-list , .language-experience-list , .frametool-experience-list , .unordered-profile-list {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    
-}
-
 .list-button-image {
     width: 12px;
     height: auto;
-    
-}
-
-.preview-summary {
-    word-break: break-all;
-}
-
-
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important; 
-    -webkit-text-fill-color: black !important; 
-    
-}
-
-/* For non-webkit browsers */
-input:-moz-autofill,
-input:-moz-autofill:focus,
-input:-moz-autofill:hover,
-input:-moz-autofill:active {
-    box-shadow: 0 0 0 30px white inset !important; 
-    color: black !important; 
     
 }
 
