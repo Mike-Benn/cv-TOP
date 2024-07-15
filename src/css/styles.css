@@ -26,7 +26,8 @@
 main {
     display: flex;
     justify-content: center;
-    grid-template-columns: minmax(490px , 33%) 1fr;
+    position: relative;
+    
     
 }
 
@@ -75,6 +76,43 @@ input:-moz-autofill:active {
     
 }
 
+@supports not (selector(::-webkit-scrollbar)) {
+    .generator {
+        scrollbar-width: thin; 
+        
+    }
+
+    .preview { 
+        scrollbar-width: thin;
+    }
+
+    
+}
+
+*::-webkit-scrollbar {
+    width: .35rem;
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--generator-border-color);
+    border-radius: 10px;
+}
+
+.button-overlay {
+    position: fixed;
+    right: 3%;
+    bottom: 5%;
+    height: 75px;
+    width: 150px;
+    display: flex;
+    z-index: 1;
+    
+    
+}
+
+
+
 /*****************/
 /*   Generator   */
 /*****************/
@@ -87,10 +125,10 @@ input:-moz-autofill:active {
     background-color: white;
     overflow-y: scroll;
     height: 100vh;
-    scrollbar-width: thin;
     box-sizing: border-box;
     min-width: 490px;
     max-width: 33%;
+    
     
 }
 
@@ -187,10 +225,11 @@ input:-moz-autofill:active {
     box-sizing: border-box;
     height: 100vh;
     overflow: auto;
-    scrollbar-width: thin;
     display: flex;
     justify-content: center;
     width: 100%;
+    
+    
 }
 
 .preview-container {
@@ -205,6 +244,7 @@ input:-moz-autofill:active {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    
         
 }
 
@@ -333,32 +373,25 @@ input:-moz-autofill:active {
     
 }
 
-.button-overlay {
-    position: absolute;
-    top: 85%;
-    left: 85%;
-    height: 75px;
-    width: 175px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    
-}
+
 
 .toggle-display-button {
     border-radius: 45px 0px 0px 45px;
     border-right: none;
+    
     
 }
 
 .print-button {
     border-radius: 0px 45px 45px 0px;
     border-left: none;
-
+    
 }
 
 .toggle-display-button , .print-button {
     background-color: var(--overlay-button-backgr-color);
     border: none;
+    flex-grow: 1;
 
 }
 
@@ -371,4 +404,49 @@ input:-moz-autofill:active {
     background-color: #c32cff;
 }
 
+@media (max-width: 1350px) {
 
+    .preview {
+        background-color: #f3f3f479;
+        position: fixed;
+        left: 0;
+        top: 0;  
+        
+    }
+
+    .generator {
+        max-width: 50%;
+    }
+
+    .preview-container {
+        transform: scale(.85);
+    }
+
+}
+
+@media (max-width: 810px) {
+    .preview-container {
+        position: absolute;
+        top: -15%;
+        transform: scale(.65);
+    }
+
+    .button-overlay {
+        height: 50px;
+        width: 100px;
+    }
+
+    .overlay-icon {
+        height: 35px;
+        width: 35px;
+    }
+}
+
+    
+
+@media (max-width: 650px) {
+    .preview-container {
+        top: -25%;
+        transform: scale(.50);
+    }
+}
