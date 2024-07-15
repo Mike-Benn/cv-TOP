@@ -287,12 +287,16 @@ function ResumeGenerator() {
 
     const handleSubmitJobProfile = () => {
         if (currJobProfileList.length < 3) {
+            let endingDate = currEndingDate;
+            if (currEmployed) {
+                endingDate = null;
+            } 
             let profile = {
                 id: uuidv4(), 
                 position: currPosition,
                 company: currCompany,
                 startingDate: currStartingDate,
-                endingDate: currEndingDate,
+                endingDate: endingDate,
                 stillEmployed: currEmployed,
                 responsibilities: currJobResponsibilitiesList,  
             }
