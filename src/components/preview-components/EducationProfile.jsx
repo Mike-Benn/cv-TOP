@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 function EducationProfile({ item }) {
 
     let studentStatus = null;
-
     if (item.stillEnrolled) {
         studentStatus = <p className="preview-status">Currently Enrolled</p>
     } else {
@@ -14,7 +13,7 @@ function EducationProfile({ item }) {
     return (
         <div className="preview-education-profile">
             <div className="preview-section-subheader">
-                <div className="preview-school-info">
+                <div className="preview-profile-info">
                     <p className="preview-topic">{item.organization}</p>
                     {studentStatus}
                 </div>
